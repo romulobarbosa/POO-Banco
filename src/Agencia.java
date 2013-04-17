@@ -105,6 +105,28 @@ public class Agencia {
 	}
 
 /**
+ * Deposita um valor na conta
+ * 	
+ * @param numero
+ * @param valor
+ * @return
+ */
+	public static String depositar(int numero, float valor) {
+		Conta conta = getConta(numero);
+		
+		if (conta == null) {
+			return "Conta inexistente.";
+		}
+		
+		switch (conta.depositar(valor)) {
+			case 1:
+				return "O valor de deposito nao pode ser negativo.";
+		}
+		
+		return "Deposito efetuado com sucesso";
+	}
+
+/**
  * Pega uma conta na lista de contas
  * 
  * @param numero
