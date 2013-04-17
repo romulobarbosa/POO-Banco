@@ -39,6 +39,18 @@ public class principal {
 		                saldo = dados.nextFloat();
 		                
 		                System.out.println(agencia.criarConta(numero, proprietario, saldo));
+		                
+		        	case 2:
+		        		System.out.println("2 - Cancelar conta");
+		        	
+		        	case 3:
+		        		System.out.println("3 - Realizar um saque");
+		        		
+		        	case 4:
+		        		System.out.println("4 - Realizar um deposito");
+		        		
+		        	case 5:
+		        		System.out.println("5 - Listar contas existentes");
 	        	}
 	        }
 		}
