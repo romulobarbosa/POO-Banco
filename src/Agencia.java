@@ -49,6 +49,7 @@ public class Agencia {
 		
 		return "Conta cadastrada com sucesso.";
 	}	
+	
 /**
  * Cancela conta
  * 
@@ -56,7 +57,7 @@ public class Agencia {
  * @return
  */
 	public static String cancelarConta(int numero) {
-		for (int i = 0; i <= contas.size(); i++) {
+		for (int i = 0; i < contas.size(); i++) {
 			if (contas.get(i).getNumero() == numero) {
 				contas.remove(i);
 				return "Conta cancelada com sucesso.";
@@ -64,6 +65,21 @@ public class Agencia {
 		}
 		
 		return "Conta inexistente.";
+	}
+
+/**
+ * Lista todas as contas
+ * 
+ * @return
+ */
+	public static String listarContas() {
+		String listaDeContas = "";
+		
+		for (int i = 0; i < contas.size(); i++) {
+			listaDeContas += contas.get(i).getNumero() + " - " + contas.get(i).getProprietario() + " - " + contas.get(i).getSaldo() + "\n";
+		}
+		
+		return listaDeContas;
 	}
 	
 }
