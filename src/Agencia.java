@@ -79,6 +79,30 @@ public class Agencia {
 		
 		return listaDeContas;
 	}
+	
+/**
+ * Saca um valor da conta
+ * 	
+ * @param numero
+ * @param valor
+ * @return 
+ */
+	public static String sacar(int numero, float valor) {
+		Conta conta = getConta(numero);
+		
+		if (conta == null) {
+			return "Conta inexistente.";
+		}
+		
+		switch (conta.sacar(valor)) {
+			case 1:
+				return "O valor de saque nao pode ser negativo.";
+			case 2:
+				return "O valor de saque nao pode ser maior que o saldo da conta.";
+		}
+		
+		return "Saque efetuado com sucesso.";
+	}
 
 /**
  * Pega uma conta na lista de contas
