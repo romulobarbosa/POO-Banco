@@ -48,7 +48,7 @@ public class principal {
 		        	case 2:
 		        		System.out.println("2 - Cancelar conta");
 		        		int num;
-		        		System.out.println("Informe o numero da conta a ser cancelada");
+		        		System.out.print("Informe o numero da conta a ser cancelada");
 		        		num = dados.nextInt();
 		        		
 		        		System.out.println();
@@ -92,7 +92,7 @@ public class principal {
 		        		
 		        		System.out.println();
 		        		System.out.println();
-		        		System.out.println();
+		        		System.out.println(agencia.listarContas());
 		                System.out.println();
 		        		break;
 	        	}
