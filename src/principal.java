@@ -59,24 +59,30 @@ public class principal {
 		        	
 		        	case 3:
 		        		System.out.println("3 - Realizar um saque");
-		        		int conta;
+		        		int contaSaque;
 		        		float valorSaque;
 		        		System.out.print("Informe o nœmero da conta:");
-		        		conta = dados.nextInt();
+		        		contaSaque = dados.nextInt();
 		        		System.out.print("Informe o valor do saque:");
 		        		valorSaque = dados.nextFloat();
 		        		
 		        		System.out.println();
-		        		System.out.println(agencia.sacar(conta, valorSaque));
+		        		System.out.println(agencia.sacar(contaSaque, valorSaque));
 		        		System.out.println();
 		                System.out.println();
 		        		break;
 		        		
 		        	case 4:
 		        		System.out.println("4 - Realizar um deposito");
+		        		int contaDep;
+		        		float valorDep;
+		        		System.out.print("Informe o nœmero da conta:");
+		        		contaDep = dados.nextInt();
+		        		System.out.print("Informe o valor do deposito:");
+		        		valorDep = dados.nextFloat();
 		        		
 		        		System.out.println();
-		        		System.out.println();
+		        		System.out.println(agencia.depositar(contaDep, valorDep));
 		        		System.out.println();
 		                System.out.println();
 		        		break;
@@ -90,11 +96,6 @@ public class principal {
 		                System.out.println();
 		        		break;
 	        	}
-	        }
-	        
-	        switch (menuNum) {
-	        	case 1:
-	        		
 	        }
 		}
 
