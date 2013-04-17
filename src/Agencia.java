@@ -101,7 +101,7 @@ public class Agencia {
 				return "O valor de saque nao pode ser maior que o saldo da conta. Saque m‡ximo de " + getSaldo(numero);
 		}
 		
-		return "Saque efetuado com sucesso.";
+		return "Saque efetuado com sucesso. Saldo atual: "+ getSaldo(numero);
 	}
 
 /**
