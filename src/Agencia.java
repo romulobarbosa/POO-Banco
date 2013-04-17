@@ -66,5 +66,20 @@ public class Agencia {
 		
 		return "Conta inexistente.";
 	}
+
+/**
+ * Lista todas as contas
+ * 
+ * @return
+ */
+	public static String listarContas() {
+		String listaDeContas = "";
+		
+		for (int i = 0; i < contas.size(); i++) {
+			listaDeContas += contas.get(i).getNumero() + " - " + contas.get(i).getProprietario() + " - " + contas.get(i).getSaldo() + "\n";
+		}
+		
+		return listaDeContas;
+	}
 	
 }
