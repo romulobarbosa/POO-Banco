@@ -23,6 +23,23 @@ public class principal {
 	        
 	        if(menuNum == 0 || menuNum >= 7){
 	        	System.out.println("Opcao invalida");
+	        } else {
+	        	int numero;
+	        	String proprietario;
+	        	float saldo;
+	        	
+		        switch (menuNum) {
+		        	case 1:
+		        		System.out.println("1 - Criar conta");
+		        		System.out.print("Informe o numero: ");
+		                numero = dados.nextInt();
+		                System.out.print("Informe o proprietario: ");
+		                proprietario = dados.next();
+		                System.out.print("Informe o saldo: ");
+		                saldo = dados.nextFloat();
+		                
+		                System.out.println(agencia.criarConta(numero, proprietario, saldo));
+	        	}
 	        }
 		}
 
