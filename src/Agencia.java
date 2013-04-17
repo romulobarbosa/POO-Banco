@@ -35,10 +35,8 @@ public class Agencia {
 			return "Numero maximo de contas ja cadastrado no sistema.";
 		}
 		
-		for (int i = 0; i < contas.size(); i++) {
-			if (contas.get(i).getNumero() == numero) {
-				return "Ja existe uma conta com esse numero";
-			}
+		if (getConta(numero) != null) {
+			return "Ja existe uma conta com esse numero";
 		}
 			
 		if (saldo < 0 ) {
@@ -57,14 +55,14 @@ public class Agencia {
  * @return
  */
 	public static String cancelarConta(int numero) {
-		for (int i = 0; i < contas.size(); i++) {
-			if (contas.get(i).getNumero() == numero) {
-				contas.remove(i);
-				return "Conta cancelada com sucesso.";
-			}
+		Conta conta = getConta(numero);
+		
+		if (conta == null) {
+			return "Conta inexistente.";
 		}
 		
-		return "Conta inexistente.";
+		contas.remove(conta);
+		return "Conta cancelada com sucesso.";
 	}
 
 /**
@@ -80,6 +78,22 @@ public class Agencia {
 		}
 		
 		return listaDeContas;
+	}
+
+/**
+ * Pega uma conta na lista de contas
+ * 
+ * @param numero
+ * @return 
+ */
+	private static Conta getConta(int numero) {
+		for (int i = 0; i < contas.size(); i++) {
+			if (contas.get(i).getNumero() == numero) {
+				return contas.get(i);
+			}
+		}
+		
+		return null;
 	}
 	
 }
