@@ -15,7 +15,7 @@ public class Agencia {
 /**
  * Lista das contas da agência
  */
-	public static ArrayList<Conta> contas = new ArrayList(20);
+	public static ArrayList<Conta> contas = new ArrayList<Conta>();
 	
 /**
  * Contrutor da classe agência
@@ -43,4 +43,21 @@ public class Agencia {
 		
 		return "Conta cadastrada com sucesso.";
 	}	
+/**
+ * Cancela conta
+ * 
+ * @param numero
+ * @return
+ */
+	public static String cancelarConta(int numero) {
+		for (int i = 0; i <= contas.size(); i++) {
+			if (contas.get(i).getNumero() == numero) {
+				contas.remove(i);
+				return "Conta cancelada com sucesso.";
+			}
+		}
+		
+		return "Conta inexistente.";
+	}
+	
 }
