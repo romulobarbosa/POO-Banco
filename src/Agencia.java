@@ -34,6 +34,12 @@ public class Agencia {
 		if (contas.size() >= MAX_CONTAS) {
 			return "Numero maximo de contas ja cadastrado no sistema.";
 		}
+		
+		for (int i = 0; i <= contas.size(); i++) {
+			if (contas.get(i).getNumero() == numero) {
+				return "Ja existe uma conta com esse numero";
+			}
+		}
 			
 		if (saldo < 0 ) {
 			return "Imposs’vel cadastrar valor negativo como saldo.";
