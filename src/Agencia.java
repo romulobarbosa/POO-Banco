@@ -98,7 +98,7 @@ public class Agencia {
 			case 1:
 				return "O valor de saque nao pode ser negativo.";
 			case 2:
-				return "O valor de saque nao pode ser maior que o saldo da conta.";
+				return "O valor de saque nao pode ser maior que o saldo da conta. Saque m‡ximo de " + getSaldo(numero);
 		}
 		
 		return "Saque efetuado com sucesso.";
@@ -124,6 +124,16 @@ public class Agencia {
 		}
 		
 		return "Deposito efetuado com sucesso";
+	}
+	
+/**
+ * Pega o saldo de uma conta
+ * 	
+ * @param numero
+ * @return
+ */
+	public static float getSaldo(int numero) {
+		return getConta(numero).getSaldo();
 	}
 
 /**
