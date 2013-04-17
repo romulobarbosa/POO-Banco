@@ -59,9 +59,15 @@ public class principal {
 		        	
 		        	case 3:
 		        		System.out.println("3 - Realizar um saque");
+		        		int conta;
+		        		float valorSaque;
+		        		System.out.print("Informe o nœmero da conta:");
+		        		conta = dados.nextInt();
+		        		System.out.print("Informe o valor do saque:");
+		        		valorSaque = dados.nextFloat();
 		        		
 		        		System.out.println();
-		        		System.out.println();
+		        		System.out.println(agencia.sacar(conta, valorSaque));
 		        		System.out.println();
 		                System.out.println();
 		        		break;
