@@ -42,6 +42,11 @@ public class principal {
 		                
 		        	case 2:
 		        		System.out.println("2 - Cancelar conta");
+		        		int num;
+		        		System.out.println("Informe o numero da conta a ser cancelada");
+		        		num = dados.nextInt();
+		        		
+		        		System.out.println(agencia.cancelarConta(num));
 		        	
 		        	case 3:
 		        		System.out.println("3 - Realizar um saque");

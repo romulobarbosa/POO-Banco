@@ -35,7 +35,7 @@ public class Agencia {
 			return "Numero maximo de contas ja cadastrado no sistema.";
 		}
 		
-		for (int i = 0; i <= contas.size(); i++) {
+		for (int i = 0; i < contas.size(); i++) {
 			if (contas.get(i).getNumero() == numero) {
 				return "Ja existe uma conta com esse numero";
 			}
