@@ -53,6 +53,11 @@ public class principal {
 		        		System.out.println("5 - Listar contas existentes");
 	        	}
 	        }
+	        
+	        switch (menuNum) {
+	        	case 1:
+	        		
+	        }
 		}
 
 	}
