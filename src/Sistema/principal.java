@@ -1,8 +1,12 @@
+package Sistema;
 import java.util.Scanner;
+import Sistema.Utilitarios;
 
 public class principal {
+	public static Utilitarios u = new Utilitarios();
 
 	public static void main(String[] args) {
+
 		Scanner dados = new Scanner(System.in);
 		Agencia agencia = new Agencia();
 		
@@ -100,5 +104,8 @@ public class principal {
 		}
 
 	}
-
+	
+	public static void construirMenu() {
+		
+	}
 }
