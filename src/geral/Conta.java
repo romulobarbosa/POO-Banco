@@ -1,4 +1,4 @@
-package Sistema;
+package geral;
 /**
  * Conta
  * 

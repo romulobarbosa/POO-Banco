@@ -1,4 +1,4 @@
-package Sistema;
+package geral;
 public class Utilitarios {
 
 	public static void p(String linha){

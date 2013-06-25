@@ -1,6 +1,6 @@
-package Sistema;
-import java.util.Scanner;
-import Sistema.Utilitarios;
+package geral;
+import java.util.Scanner; 
+import geral.Utilitarios;
 
 public class principal {
 	public static Utilitarios u = new Utilitarios();
@@ -118,5 +118,11 @@ public class principal {
 		u.p("8 - Cobrar tarifa conta corrente ou especial");
 		u.p("9 - Cobrar juros conta especial");
 		u.p("10 - Finalizar programa");		
+	}
+	
+	public static void validarOpcao(int opcao) {
+		if(!(opcao > 0 && opcao < 11)) {
+			
+		}
 	}
 }
