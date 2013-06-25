@@ -1,4 +1,4 @@
-package geral;
+package conta;
 /**
  * Conta
  * 
