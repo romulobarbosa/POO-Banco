@@ -3,7 +3,7 @@ import conta.Agencia;
 import java.util.Scanner; 
 import geral.Utilitarios;
 
-public class principal {
+public class Tp2App {
 	public static Utilitarios u = new Utilitarios();
 
 	public static void main(String[] args) {
