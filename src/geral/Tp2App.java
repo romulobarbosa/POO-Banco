@@ -1,8 +1,14 @@
-import java.util.Scanner;
+package geral;
+import conta.Agencia;
+import java.util.Scanner; 
+import geral.Utilitarios;
 
-public class principal {
+public class Tp2App {
+	public static Utilitarios u = new Utilitarios();
 
 	public static void main(String[] args) {
+		construirMenu();
+
 		Scanner dados = new Scanner(System.in);
 		Agencia agencia = new Agencia();
 		
@@ -100,5 +106,24 @@ public class principal {
 		}
 
 	}
-
+	
+	public static void construirMenu() {
+		u.p(u.t(40));
+		u.p("1 - Criar conta");
+		u.p("2 - Cancelar conta");
+		u.p("3 - Sacar");
+		u.p("4 - Depositar");
+		u.p("5 - Listar contas existentes (nao tarifado");
+		u.p("6 - Consultar dados da conta (tarifado p/ poupanca)");
+		u.p("7 - Reajustar poupanca");
+		u.p("8 - Cobrar tarifa conta corrente ou especial");
+		u.p("9 - Cobrar juros conta especial");
+		u.p("10 - Finalizar programa");		
+	}
+	
+	public static void validarOpcao(int opcao) {
+		if(!(opcao > 0 && opcao < 11)) {
+			
+		}
+	}
 }
