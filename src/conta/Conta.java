@@ -24,6 +24,8 @@ public class Conta {
  */
 	private float saldo;
 	
+	private boolean permissoesEspeciaisHabilitas;
+	
 /**
  * Contrutor da classe conta
  * 
