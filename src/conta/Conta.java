@@ -135,4 +135,11 @@ public abstract class Conta {
 	protected void habilitarPermissoesEspeciais() {
 		this.permissoesEspeciaisHabilitas = true;
 	}
+
+/**
+ * Desabilita as permiss›es especiais
+ */
+	protected void deshabilitarPermissoesEspeciais() {
+		this.permissoesEspeciaisHabilitas = false;
+	}
 }
