@@ -1,9 +1,9 @@
 package execao;
 
-public class ExcecaoFaltaEspaco {
+public class ExcecaoFaltaEspaco extends RuntimeException {
 
-	public static void main(String[] args) {
-
+	public ExcecaoFaltaEspaco(String message) {
+		super(message);
 	}
 
 }

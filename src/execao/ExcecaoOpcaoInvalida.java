@@ -1,9 +1,9 @@
 package execao;
 
-public class ExcecaoOpcaoInvalida extends Exception{
+public class ExcecaoOpcaoInvalida extends RuntimeException {
 
-	public ExcecaoOpcaoInvalida(java.lang.String message) {
-		System.out.println(message);
+	public ExcecaoOpcaoInvalida(String message) {
+		super(message);
 	}
-	
+
 }
