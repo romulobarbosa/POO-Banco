@@ -5,12 +5,11 @@ import java.util.Scanner;
 import geral.Utilitarios;
 
 public class Tp2App {
-	public static Utilitarios u = new Utilitarios();
+	private static Utilitarios u = new Utilitarios();
+	private Agencia agencia = new Agencia();
 
 	public static void main(String[] args) {
-		// construirMenu();
-		validarOpcao(11);
-
+		/*
 		Scanner dados = new Scanner(System.in);
 		Agencia agencia = new Agencia();
 		
@@ -107,7 +106,7 @@ public class Tp2App {
 	        }
 		}
 
-	}
+	*/}
 	
 	public static void construirMenu() {
 		u.p(u.t(40));
