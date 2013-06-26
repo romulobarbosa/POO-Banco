@@ -86,23 +86,35 @@ public abstract class Conta {
 	}
 
 /**
- * Retira um valor da conta
+ * Realiza o saque na conta
  * 
  * @param valor
- * @return
+ * @throws ExcecaoValorNegativo
+ * @throws ExcecaoSaqueInvalido
  */
 	public void sacar(float valor) throws ExcecaoValorNegativo, ExcecaoSaqueInvalido {
+		verificarCondicoesParaSaque(valor);
+		
+		this.saldo = this.saldo - valor;
+		
+		u.pl("Saque realizado com sucesso. Saldo da conta Ž:" + this.getSaldo());
+	}
+	
+/**
+ * Verifica se o valor de saque Ž valido
+ * 
+ * @param valor
+ * @throws ExcecaoValorNegativo
+ * @throws ExcecaoSaqueInvalido
+ */
+	protected void verificarCondicoesParaSaque(float valor) throws ExcecaoValorNegativo, ExcecaoSaqueInvalido{
 		if (valor < 0) {
 			throw new ExcecaoValorNegativo("Valor de deposito nao pode ser negativo.");
 		}
 		
 		if (this.getSaldo() < valor) {
 			throw new ExcecaoSaqueInvalido("Valor de saque nao pode ser maior que o saldo.");
-		}
-		
-		this.saldo = this.saldo - valor;
-		
-		u.pl("Saque realizado com sucesso. Saldo da conta Ž:" + this.getSaldo());
+		}		
 	}
 	
 /**
