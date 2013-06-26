@@ -1,9 +1,9 @@
 package execao;
 
-public class ExcecaoNumeroInvalido {
+public class ExcecaoNumeroInvalido extends RuntimeException {
 
-	public static void main(String[] args) {
-
+	public ExcecaoNumeroInvalido(String message) {
+		super(message);
 	}
 
 }
