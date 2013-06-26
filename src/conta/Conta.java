@@ -37,7 +37,7 @@ public abstract class Conta {
 	private boolean permissoesEspeciaisHabilitas = false;
 	
 /**
- * Contrutor da classe conta
+ * Cria uma nova instância e inicializa atributos.
  * 
  * @param numero
  * @param proprietario
@@ -50,7 +50,7 @@ public abstract class Conta {
 	}
 	
 /**
- * Retorna o número da conta
+ * Obtém o número da conta.
  * 
  * @return int numero
  */
@@ -59,7 +59,7 @@ public abstract class Conta {
 	}
 	
 /**
- * Retorna o nome do proprietário da conta
+ * Obtém o proprietário da conta.
  * 
  * @return String proprietário
  */
@@ -68,7 +68,7 @@ public abstract class Conta {
 	}
 	
 /**
- * Retorna o saldo atual da conta
+ * Obtém o saldo da conta.
  * 
  * @return float saldo
  */
@@ -118,10 +118,9 @@ public abstract class Conta {
 	}
 	
 /**
- * Deposita um valor na conta
+ * Realiza o depósito na conta.
  * 
  * @param valor
- * @return
  * @throws ExcecaoValorNegativo 
  */
 	public void depositar(float valor) throws ExcecaoValorNegativo {
