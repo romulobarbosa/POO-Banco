@@ -1,9 +1,10 @@
 package execao;
 
-public class ExcecaoTipoConta {
+public class ExcecaoTipoConta extends RuntimeException {
 
-	public static void main(String[] args) {
-
+	public ExcecaoTipoConta(String message) {
+		super(message);
 	}
 
 }
+
