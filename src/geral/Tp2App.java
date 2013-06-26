@@ -4,13 +4,14 @@ import execao.ExcecaoOpcaoInvalida;
 import java.util.Scanner; 
 import geral.Utilitarios;
 
+
 public class Tp2App {
 	private static Utilitarios u = new Utilitarios();
 	private Agencia agencia = new Agencia();
 
 	public static void main(String[] args) {
-		/*
 		Scanner dados = new Scanner(System.in);
+		/*
 		Agencia agencia = new Agencia();
 		
 		int menuNum = 1;
