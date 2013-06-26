@@ -1,9 +1,10 @@
 package execao;
 
-public class ExcecaoSaqueInvalido {
+public class ExcecaoSaqueInvalido extends RuntimeException {
 
-	public static void main(String[] args) {
-
+	public ExcecaoSaqueInvalido(String message) {
+		super(message);
 	}
 
 }
+

@@ -1,9 +1,9 @@
 package execao;
 
-public class ExcecaoSaldoInsuficiente {
+public class ExcecaoSaldoInsuficiente extends RuntimeException {
 
-	public static void main(String[] args) {
-
+	public ExcecaoSaldoInsuficiente(String message) {
+		super(message);
 	}
 
 }

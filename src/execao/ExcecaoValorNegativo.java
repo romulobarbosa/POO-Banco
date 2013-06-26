@@ -1,9 +1,10 @@
 package execao;
 
-public class ExcecaoValorNegativo {
+public class ExcecaoValorNegativo extends RuntimeException {
 
-	public static void main(String[] args) {
-
+	public ExcecaoValorNegativo(String message) {
+		super(message);
 	}
 
 }
+
