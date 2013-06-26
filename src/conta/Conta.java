@@ -153,4 +153,10 @@ public abstract class Conta {
 	protected void deshabilitarPermissoesEspeciais() {
 		this.permissoesEspeciaisHabilitas = false;
 	}
+	
+/**
+ * Retorna o tipo da conta como um string.
+ * @return
+ */
+	public abstract String getTipoConta();
 }
