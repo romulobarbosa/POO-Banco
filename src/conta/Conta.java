@@ -84,18 +84,18 @@ public class Conta {
  * @param valor
  * @return
  */
-	public byte sacar(float valor) {
+	public void sacar(float valor) throws ExcecaoValorNegativo, ExcecaoSaqueInvalido {
 		if (valor < 0) {
-			return VALOR_NEGATIVO;
+			throw new ExcecaoValorNegativo("Valor de deposito nao pode ser negativo.");
 		}
 		
 		if (this.getSaldo() < valor) {
-			return SALDO_INSUFICIENTE;
+			throw new ExcecaoSaqueInvalido("Valor de saque nao pode ser maior que o saldo.");
 		}
 		
 		this.saldo = this.saldo - valor;
 		
-		return OPERACAO_OK;
+		u.pl("Saque realizado com sucesso. Saldo da conta :" + this.getSaldo());
 	}
 	
 /**
