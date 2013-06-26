@@ -1,5 +1,6 @@
 package geral;
 import conta.Agencia;
+import execao.ExcecaoOpcaoInvalida;
 import java.util.Scanner; 
 import geral.Utilitarios;
 
@@ -7,7 +8,8 @@ public class Tp2App {
 	public static Utilitarios u = new Utilitarios();
 
 	public static void main(String[] args) {
-		construirMenu();
+		// construirMenu();
+		validarOpcao(11);
 
 		Scanner dados = new Scanner(System.in);
 		Agencia agencia = new Agencia();
@@ -123,7 +125,12 @@ public class Tp2App {
 	
 	public static void validarOpcao(int opcao) {
 		if(!(opcao > 0 && opcao < 11)) {
-			
+			ExcecaoOpcaoInvalida teste = new ExcecaoOpcaoInvalida("teste");
 		}
+	}
+
+	private static void ExcecaoOpcaoInvalida(String string) {
+		// TODO Auto-generated method stub
+		
 	}
 }
