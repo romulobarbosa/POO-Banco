@@ -23,7 +23,10 @@ public class Conta {
  * Saldo da conta
  */
 	private float saldo;
-	
+
+/**
+ * Permiss›es especiais
+ */
 	private boolean permissoesEspeciaisHabilitas;
 	
 /**
@@ -100,14 +103,13 @@ public class Conta {
  * 
  * @param valor
  * @return
+ * @throws ExcecaoValorNegativo 
  */
-	public byte depositar(float valor) {
+	public void depositar(float valor) throws ExcecaoValorNegativo {
 		if (valor < 0) {
-			return VALOR_NEGATIVO;
+			throw new ExcecaoValorNegativo("Valor de deposito nao pode ser negativo.");
 		}
 		
 		this.saldo = this.saldo + valor;
-		
-		return OPERACAO_OK;
 	}
 }
