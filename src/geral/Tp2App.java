@@ -107,9 +107,10 @@ public class Tp2App {
 	        }
 		}
 
-	*/}
+	*/}// fecha a void main
 	
-	public static void construirMenu() {
+	// Imprime o menu	
+	private void construirMenu() {
 		u.p(u.t(40));
 		u.p("1 - Criar conta");
 		u.p("2 - Cancelar conta");
@@ -123,14 +124,19 @@ public class Tp2App {
 		u.p("10 - Finalizar programa");		
 	}
 	
-	public static void validarOpcao(int opcao) {
+	// Valida a opao do menu selecionada
+	private void validarOpcao(int opcao) {
 		if(!(opcao > 0 && opcao < 11)) {
-			ExcecaoOpcaoInvalida teste = new ExcecaoOpcaoInvalida("teste");
+			
 		}
 	}
-
-	private static void ExcecaoOpcaoInvalida(String string) {
-		// TODO Auto-generated method stub
+	
+	private void tratarExcecao(String msg, Exception e) {
 		
 	}
+	
+	private byte selecionarTipoConta(){
+
+	}
+	
 }
