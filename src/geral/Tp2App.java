@@ -109,7 +109,7 @@ public class Tp2App {
 
 	*/}// fecha a void main
 	
-	// Imprime o menu	
+	// MŽtodo respons‡vel por construir o menu de op›es do usu‡rio
 	private void construirMenu() {
 		u.pl(u.t(40));
 		u.pl("1 - Criar conta");
@@ -124,17 +124,19 @@ public class Tp2App {
 		u.pl("10 - Finalizar programa");		
 	}
 	
-	// Valida a opao do menu selecionada
+	// Realiza a valida‹o da op‹o, lanando uma exce‹o caso a op‹o seja inv‡lida
 	private void validarOpcao(int opcao) {
 		if(!(opcao > 0 && opcao < 11)) {
 			
 		}
 	}
 	
+	// MŽtodo de tratamento genŽrico das exce›es
 	private void tratarExcecao(String msg, Exception e) {
 		
 	}
 	
+	// MŽtodo respons‡vel por exibir um submenu de tipos de conta e obter o tipo escolhido pelo usu‡rio
 	private byte selecionarTipoConta(){
 		u.pl("Tipo de conta:");
 		u.pl("");
@@ -143,6 +145,56 @@ public class Tp2App {
 		u.pl("3 - Especial");
 		u.p("tipo: ");
 		return entrada.nextByte();
+	}
+	
+	// MŽtodo que inicia a execu‹o da aplica‹o
+	public void executar() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o da cobrana de juros de conta especial
+	private void cobrarJuros() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o da cobrana de tarifa de conta corrente
+	private void cobrarTarifa() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o de reajuste de conta poupana
+	private void reajustarPoupanca() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o da consulta de dados da conta
+	private void consultarContar() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o de um dep—sito
+	private void depositar() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o de um saque
+	private void sacar() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o do cancelamento de conta
+	private void cancelarConta() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o da cria‹o de conta
+	private void criarConta() {
+		
+	}
+	
+	// MŽtodo respons‡vel por pausar a execu‹o atŽ o usu‡rio digitar ENTER
+	private void pausar() {
+		
 	}
 	
 }

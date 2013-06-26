@@ -17,5 +17,4 @@ public class Utilitarios {
 	public static void p(String linha){
 		System.out.print(linha);
 	}
-
 }
