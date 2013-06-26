@@ -1,9 +1,9 @@
 package execao;
 
-public class ExcecaoContaExistente {
+public class ExcecaoContaExistente extends RuntimeException {
 
-	public static void main(String[] args) {
-
+	public ExcecaoContaExistente(String message) {
+		super(message);
 	}
 
 }
