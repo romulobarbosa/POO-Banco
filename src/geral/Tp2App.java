@@ -8,9 +8,9 @@ import geral.Utilitarios;
 public class Tp2App {
 	private static Utilitarios u = new Utilitarios();
 	private Agencia agencia = new Agencia();
+	private Scanner entrada = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		Scanner dados = new Scanner(System.in);
 		/*
 		Agencia agencia = new Agencia();
 		
@@ -107,30 +107,94 @@ public class Tp2App {
 	        }
 		}
 
-	*/}
+	*/}// fecha a void main
 	
-	public static void construirMenu() {
-		u.p(u.t(40));
-		u.p("1 - Criar conta");
-		u.p("2 - Cancelar conta");
-		u.p("3 - Sacar");
-		u.p("4 - Depositar");
-		u.p("5 - Listar contas existentes (nao tarifado");
-		u.p("6 - Consultar dados da conta (tarifado p/ poupanca)");
-		u.p("7 - Reajustar poupanca");
-		u.p("8 - Cobrar tarifa conta corrente ou especial");
-		u.p("9 - Cobrar juros conta especial");
-		u.p("10 - Finalizar programa");		
+	// MŽtodo respons‡vel por construir o menu de op›es do usu‡rio
+	private void construirMenu() {
+		u.pl(u.t(40));
+		u.pl("1 - Criar conta");
+		u.pl("2 - Cancelar conta");
+		u.pl("3 - Sacar");
+		u.pl("4 - Depositar");
+		u.pl("5 - Listar contas existentes (nao tarifado");
+		u.pl("6 - Consultar dados da conta (tarifado p/ poupanca)");
+		u.pl("7 - Reajustar poupanca");
+		u.pl("8 - Cobrar tarifa conta corrente ou especial");
+		u.pl("9 - Cobrar juros conta especial");
+		u.pl("10 - Finalizar programa");		
 	}
 	
-	public static void validarOpcao(int opcao) {
+	// Realiza a valida‹o da op‹o, lanando uma exce‹o caso a op‹o seja inv‡lida
+	private void validarOpcao(int opcao) {
 		if(!(opcao > 0 && opcao < 11)) {
-			ExcecaoOpcaoInvalida teste = new ExcecaoOpcaoInvalida("teste");
+			
 		}
 	}
-
-	private static void ExcecaoOpcaoInvalida(String string) {
-		// TODO Auto-generated method stub
+	
+	// MŽtodo de tratamento genŽrico das exce›es
+	private void tratarExcecao(String msg, Exception e) {
 		
 	}
+	
+	// MŽtodo respons‡vel por exibir um submenu de tipos de conta e obter o tipo escolhido pelo usu‡rio
+	private byte selecionarTipoConta(){
+		u.pl("Tipo de conta:");
+		u.pl("");
+		u.pl("1 - Corrente");
+		u.pl("2 - Poupanca");
+		u.pl("3 - Especial");
+		u.p("tipo: ");
+		return entrada.nextByte();
+	}
+	
+	// MŽtodo que inicia a execu‹o da aplica‹o
+	public void executar() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o da cobrana de juros de conta especial
+	private void cobrarJuros() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o da cobrana de tarifa de conta corrente
+	private void cobrarTarifa() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o de reajuste de conta poupana
+	private void reajustarPoupanca() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o da consulta de dados da conta
+	private void consultarContar() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o de um dep—sito
+	private void depositar() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o de um saque
+	private void sacar() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o do cancelamento de conta
+	private void cancelarConta() {
+		
+	}
+	
+	// MŽtodo auxiliar da execu‹o da cria‹o de conta
+	private void criarConta() {
+		
+	}
+	
+	// MŽtodo respons‡vel por pausar a execu‹o atŽ o usu‡rio digitar ENTER
+	private void pausar() {
+		
+	}
+	
 }
