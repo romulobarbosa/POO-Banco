@@ -9,7 +9,7 @@ import geral.Utilitarios;
  * 
  * @author gabriel
  */
-public class Conta {
+public abstract class Conta {
 	private byte OPERACAO_OK = 0;
 	private byte VALOR_NEGATIVO = 1;
 	private byte SALDO_INSUFICIENTE = 2;
