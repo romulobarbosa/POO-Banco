@@ -1,4 +1,9 @@
 package conta;
+
+import execao.ExcecaoSaqueInvalido;
+import execao.ExcecaoValorNegativo;
+import geral.Utilitarios;
+
 /**
  * Conta
  * 
@@ -8,6 +13,11 @@ public class Conta {
 	private byte OPERACAO_OK = 0;
 	private byte VALOR_NEGATIVO = 1;
 	private byte SALDO_INSUFICIENTE = 2;
+	
+/**
+ * Utilit‡rios
+ */
+	private Utilitarios u = new Utilitarios();
 	
 /**
  * Nœmero da conta
@@ -95,7 +105,7 @@ public class Conta {
 		
 		this.saldo = this.saldo - valor;
 		
-		u.pl("Saque realizado com sucesso. Saldo da conta ÂŽ:" + this.getSaldo());
+		u.pl("Saque realizado com sucesso. Saldo da conta Ž:" + this.getSaldo());
 	}
 	
 /**
