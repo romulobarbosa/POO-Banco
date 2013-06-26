@@ -5,8 +5,8 @@ import java.util.Scanner;
 import geral.Utilitarios;
 
 public class Tp2App {
-	public static Utilitarios u = new Utilitarios();
-	
+	private static Utilitarios u = new Utilitarios();
+	private Agencia agencia = new Agencia();
 
 	public static void main(String[] args) {
 		/*
