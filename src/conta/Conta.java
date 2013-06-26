@@ -128,4 +128,11 @@ public abstract class Conta {
 	protected boolean permissoesEspeciaisHabilitadas() {
 		return this.permissoesEspeciaisHabilitas;
 	}
+	
+/**
+ * 	Habilita as permiss›es especiais
+ */
+	protected void habilitarPermissoesEspeciais() {
+		this.permissoesEspeciaisHabilitas = true;
+	}
 }
