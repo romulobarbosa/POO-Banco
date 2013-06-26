@@ -34,7 +34,7 @@ public abstract class Conta {
 /**
  * Permiss›es especiais
  */
-	private boolean permissoesEspeciaisHabilitas;
+	private boolean permissoesEspeciaisHabilitas = false;
 	
 /**
  * Contrutor da classe conta
@@ -118,5 +118,14 @@ public abstract class Conta {
 		}
 		
 		this.saldo = this.saldo + valor;
+	}
+
+/**
+ * Consulta o estado das permiss›es especiais
+ * 
+ * @return boolean permissoesEspeciaisHabilitadas
+ */
+	protected boolean permissoesEspeciaisHabilitadas() {
+		return this.permissoesEspeciaisHabilitas;
 	}
 }
