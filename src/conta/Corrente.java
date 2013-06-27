@@ -33,4 +33,13 @@ public class Corrente extends Conta {
 		return null;
 	}
 
+/**
+ * Atribui um valor à tarifa de manutenção.
+ * 
+ * @param tarifaManutencao
+ */
+	protected void setTarifaManutencao(float tarifaManutencao) {
+		this.tarifaManutencao = tarifaManutencao;
+	}
+
 }
