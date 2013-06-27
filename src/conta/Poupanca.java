@@ -68,6 +68,14 @@ public class Poupanca extends Conta {
 		super.depositar(reajuste);
 	}
 
+/**
+ * Faz a listagem de dados da conta.
+ * @return
+ */
+	public String listarDados() {
+		return super.listarDados();
+	}
+
 	@Override
 	public String getTipoConta() {
 		return null;
