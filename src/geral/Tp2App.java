@@ -148,7 +148,7 @@ public class Tp2App {
 					break;
 					
 				case 3:
-					
+					sacar();
 					break;
 				case 4:
 	
@@ -236,15 +236,24 @@ public class Tp2App {
 		
 	}
 	
-	// Método auxiliar da execução de um saque
+	/**
+	 *  Método auxiliar da execução de um saque
+	 */
 	private void sacar() {
-		
+		u.pl("3 - Sacar");
+		u.pl("");
+		u.p("Informe o numero da conta e o valor de saque:");
+		int numero = entrada.nextInt();
+		float valor = entrada.nextFloat();
+		agencia.sacar(numero, valor);
 	}
 	
 	/**
 	 *  Método auxiliar da execução do cancelamento de conta
 	 */
 	private void cancelarConta() {
+		u.pl("2 - Cancelar Conta");
+		u.pl("");
 		u.pl("Informe o numero da conta");
 		int numero = entrada.nextInt();
 		agencia.cancelarConta(numero);
@@ -254,6 +263,8 @@ public class Tp2App {
 	 *  Método auxiliar da execução da criação de conta
 	 */
 	private void criarConta() {
+		u.pl("1 - Criar Conta");
+		u.pl("");
 		u.pl("Informe o número da conta.");
 		int numero = entrada.nextInt();
 		u.pl("Informe o proprietario da conta.");
