@@ -140,16 +140,15 @@ public class Tp2App {
 		} else {
 			switch (opcao) {
 				case 1:
-
 					criarConta();
 					break;
 				
 				case 2:
-					
+					cancelarConta();
 					break;
 					
 				case 3:
-					
+					sacar();
 					break;
 				case 4:
 	
@@ -237,33 +236,48 @@ public class Tp2App {
 		
 	}
 	
-	// Método auxiliar da execução de um saque
+	/**
+	 *  Método auxiliar da execução de um saque
+	 */
 	private void sacar() {
-		
+		u.pl("3 - Sacar");
+		u.pl("");
+		u.p("Informe o numero da conta e o valor de saque:");
+		int numero = entrada.nextInt();
+		float valor = entrada.nextFloat();
+		agencia.sacar(numero, valor);
 	}
 	
-	// Método auxiliar da execução do cancelamento de conta
+	/**
+	 *  Método auxiliar da execução do cancelamento de conta
+	 */
 	private void cancelarConta() {
-		
+		u.pl("2 - Cancelar Conta");
+		u.pl("");
+		u.pl("Informe o numero da conta");
+		int numero = entrada.nextInt();
+		agencia.cancelarConta(numero);
 	}
 	
 	/**
 	 *  Método auxiliar da execução da criação de conta
 	 */
 	private void criarConta() {
-		u.pl("Informe o número da conta.");
-		int numero = entrada.nextInt();
-		u.pl("Informe o proprietario da conta.");
-		String proprietario = entrada.next();
-		u.pl("Informe o saldo inicail da conta.");
-		float saldo = entrada.nextFloat();
+		float limite = 0;
+		u.pl("1 - Criar Conta");
+		u.pl("");
+		// Lista os tipos de conta		
 		selecionarTipoConta();
 		byte tipo = selecionarTipoConta();
+		
+		u.pl("Informe o numero, proprietario e saldo da conta: ");
+		int numero = entrada.nextInt();
+		String proprietario = entrada.next();
+		float saldo = entrada.nextFloat();
 		if (tipo == 3){			
 			u.pl("Informe o limite");
-			float limite = entrada.nextFloat();
+			limite = entrada.nextFloat();
 		}
-		
 		agencia.criarConta(numero, proprietario, saldo, tipo, limite);
 	}
 	
