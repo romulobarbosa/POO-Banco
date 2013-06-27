@@ -1,9 +1,17 @@
 package conta;
 
-public class Poupanca {
+import execao.ExcecaoNumeroInvalido;
+import execao.ExcecaoValorNegativo;
 
-	public static void main(String[] args) {
+public class Poupanca extends Conta {
 
+	public Poupanca(int numero, String proprietario, float saldo) throws ExcecaoNumeroInvalido, ExcecaoValorNegativo {
+		super(numero, proprietario, saldo);
 	}
 
+	@Override
+	public String getTipoConta() {
+		return null;
+	}
+	
 }
