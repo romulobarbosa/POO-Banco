@@ -1,13 +1,21 @@
 package conta;
+
+import execao.ExcecaoNumeroInvalido;
+import execao.ExcecaoSaqueInvalido;
+import execao.ExcecaoValorNegativo;
+import geral.Utilitarios;
+
 /**
  * Conta
  * 
  * @author gabriel
  */
-public class Conta {
-	private byte OPERACAO_OK = 0;
-	private byte VALOR_NEGATIVO = 1;
-	private byte SALDO_INSUFICIENTE = 2;
+public abstract class Conta {
+	
+/**
+ * Utilit‡rios
+ */
+	private Utilitarios u = new Utilitarios();
 	
 /**
  * Nœmero da conta
@@ -23,22 +31,35 @@ public class Conta {
  * Saldo da conta
  */
 	private float saldo;
+
+/**
+ * Permiss›es especiais
+ */
+	private boolean permissoesEspeciaisHabilitas = false;
 	
 /**
- * Contrutor da classe conta
+ * Cria uma nova inst‰ncia e inicializa atributos.
  * 
  * @param numero
  * @param proprietario
  * @param saldo
  */
-	public Conta(int numero, String proprietario, float saldo) {
+	public Conta(int numero, String proprietario, float saldo) throws ExcecaoNumeroInvalido, ExcecaoValorNegativo {
+		if (numero < 0) {
+			throw new ExcecaoNumeroInvalido("Numero da conta nao pode ser negativo.");
+		}
+		
+		if (saldo < 0) {
+			throw new ExcecaoValorNegativo("Saldo inicial nao pode ser negativo.");
+		}
+		
 		this.numero = numero;
 		this.proprietario = proprietario;
 		this.saldo = saldo;
 	}
 	
 /**
- * Retorna o nœmero da conta
+ * ObtŽm o nœmero da conta.
  * 
  * @return int numero
  */
@@ -47,7 +68,7 @@ public class Conta {
 	}
 	
 /**
- * Retorna o nome do propriet‡rio da conta
+ * ObtŽm o propriet‡rio da conta.
  * 
  * @return String propriet‡rio
  */
@@ -56,7 +77,7 @@ public class Conta {
 	}
 	
 /**
- * Retorna o saldo atual da conta
+ * ObtŽm o saldo da conta.
  * 
  * @return float saldo
  */
@@ -74,38 +95,77 @@ public class Conta {
 	}
 
 /**
- * Retira um valor da conta
+ * Realiza o saque na conta
  * 
  * @param valor
- * @return
+ * @throws ExcecaoValorNegativo
+ * @throws ExcecaoSaqueInvalido
  */
-	public byte sacar(float valor) {
-		if (valor < 0) {
-			return VALOR_NEGATIVO;
-		}
-		
-		if (this.getSaldo() < valor) {
-			return SALDO_INSUFICIENTE;
-		}
+	public void sacar(float valor) throws ExcecaoValorNegativo, ExcecaoSaqueInvalido {
+		verificarCondicoesParaSaque(valor);
 		
 		this.saldo = this.saldo - valor;
 		
-		return OPERACAO_OK;
+		u.pl("Saque realizado com sucesso. Saldo da conta Ž:" + this.getSaldo());
 	}
 	
 /**
- * Deposita um valor na conta
+ * Verifica se o valor de saque Ž valido
  * 
  * @param valor
- * @return
+ * @throws ExcecaoValorNegativo
+ * @throws ExcecaoSaqueInvalido
  */
-	public byte depositar(float valor) {
+	protected void verificarCondicoesParaSaque(float valor) throws ExcecaoValorNegativo, ExcecaoSaqueInvalido{
 		if (valor < 0) {
-			return VALOR_NEGATIVO;
+			throw new ExcecaoValorNegativo("Valor de deposito nao pode ser negativo.");
+		}
+		
+		if (this.getSaldo() < valor) {
+			throw new ExcecaoSaqueInvalido("Valor de saque nao pode ser maior que o saldo.");
+		}		
+	}
+	
+/**
+ * Realiza o dep—sito na conta.
+ * 
+ * @param valor
+ * @throws ExcecaoValorNegativo 
+ */
+	public void depositar(float valor) throws ExcecaoValorNegativo {
+		if (valor < 0) {
+			throw new ExcecaoValorNegativo("Valor de deposito nao pode ser negativo.");
 		}
 		
 		this.saldo = this.saldo + valor;
-		
-		return OPERACAO_OK;
 	}
+
+/**
+ * Consulta o estado das permiss›es especiais
+ * 
+ * @return boolean permissoesEspeciaisHabilitadas
+ */
+	protected boolean permissoesEspeciaisHabilitadas() {
+		return this.permissoesEspeciaisHabilitas;
+	}
+	
+/**
+ * 	Habilita as permiss›es especiais
+ */
+	protected void habilitarPermissoesEspeciais() {
+		this.permissoesEspeciaisHabilitas = true;
+	}
+
+/**
+ * Desabilita as permiss›es especiais
+ */
+	protected void deshabilitarPermissoesEspeciais() {
+		this.permissoesEspeciaisHabilitas = false;
+	}
+	
+/**
+ * Retorna o tipo da conta como um string.
+ * @return
+ */
+	public abstract String getTipoConta();
 }
