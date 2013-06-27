@@ -24,6 +24,11 @@ public class Corrente extends Conta {
 	}
 
 	@Override
+	public String listarDados() {
+		return "Nœmero: " + this.getNumero() + ", Propriet‡rio: " + this.getProprietario() + ", Saldo: " + this.getSaldo();
+	}
+	
+	@Override
 	public String getTipoConta() {
 		return null;
 	}
