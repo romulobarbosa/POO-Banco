@@ -263,19 +263,20 @@ public class Tp2App {
 	 *  Método auxiliar da execução da criação de conta
 	 */
 	private void criarConta() {
+		float limite = 0;
 		u.pl("1 - Criar Conta");
 		u.pl("");
-		u.pl("Informe o número da conta.");
-		int numero = entrada.nextInt();
-		u.pl("Informe o proprietario da conta.");
-		String proprietario = entrada.next();
-		u.pl("Informe o saldo inicail da conta.");
-		float saldo = entrada.nextFloat();
+		// Lista os tipos de conta		
 		selecionarTipoConta();
 		byte tipo = selecionarTipoConta();
+		
+		u.pl("Informe o numero, proprietario e saldo da conta: ");
+		int numero = entrada.nextInt();
+		String proprietario = entrada.next();
+		float saldo = entrada.nextFloat();
 		if (tipo == 3){			
 			u.pl("Informe o limite");
-			float limite = entrada.nextFloat();
+			limite = entrada.nextFloat();
 		}
 		agencia.criarConta(numero, proprietario, saldo, tipo, limite);
 	}
