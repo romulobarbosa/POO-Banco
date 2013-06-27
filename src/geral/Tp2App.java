@@ -155,7 +155,9 @@ public class Tp2App {
 				    break;
 	
 				case 5:
-	
+					u.pl("5 - Listar contas existentes (nao tarifado");
+					u.pl("");
+					agencia.listarContas();
 				    break;
 	
 	
@@ -231,7 +233,9 @@ public class Tp2App {
 		
 	}
 	
-	// Método auxiliar da execução de um depósito
+	/**
+	 *  Método auxiliar da execução de um depósito
+	 */
 	private void depositar() {
 		u.pl("4 - Depositar");
 		u.pl("");
