@@ -109,7 +109,9 @@ public class Tp2App {
 
 	*/}// fecha a void main
 	
-	// MŽtodo respons‡vel por construir o menu de op›es do usu‡rio
+	/**
+	 *  MŽtodo respons‡vel por construir o menu de op›es do usu‡rio
+	 */
 	private void construirMenu() {
 		u.pl(u.t(40));
 		u.pl("1 - Criar conta");
@@ -121,17 +123,75 @@ public class Tp2App {
 		u.pl("7 - Reajustar poupanca");
 		u.pl("8 - Cobrar tarifa conta corrente ou especial");
 		u.pl("9 - Cobrar juros conta especial");
-		u.pl("10 - Finalizar programa");		
+		u.pl("10 - Finalizar programa");
+		
+		int opcao = entrada.nextInt();
+		validarOpcao(opcao);
+		
 	}
 	
-	// Realiza a valida‹o da op‹o, lanando uma exce‹o caso a op‹o seja inv‡lida
-	private void validarOpcao(int opcao) {
+	/**
+	 *  Realiza a valida‹o da op‹o, lanando uma exce‹o caso a op‹o seja inv‡lida
+	 * @param opcao
+	 */
+	private void validarOpcao(int opcao) throws ExcecaoOpcaoInvalida {
 		if(!(opcao > 0 && opcao < 11)) {
-			
+			throw new ExcecaoOpcaoInvalida("Opcao invalida");
+		} else {
+			switch (opcao) {
+				case 1:
+
+					criarConta();
+					break;
+				
+				case 2:
+					
+					break;
+					
+				case 3:
+					
+					break;
+				case 4:
+	
+				    break;
+	
+				case 5:
+	
+				    break;
+	
+	
+				case 6:
+	
+				    break;
+	
+	
+				case 7:
+	
+				    break;
+	
+	
+				case 8:
+	
+				    break;
+	
+	
+				case 9:
+	
+				    break;
+	
+	
+				case 10:
+	
+				    break;
+			}
 		}
 	}
 	
-	// MŽtodo de tratamento genŽrico das exce›es
+	/**
+	 *  MŽtodo de tratamento genŽrico das exce›es
+	 * @param msg
+	 * @param e
+	 */
 	private void tratarExcecao(String msg, Exception e) {
 		
 	}
@@ -168,7 +228,7 @@ public class Tp2App {
 	}
 	
 	// MŽtodo auxiliar da execu‹o da consulta de dados da conta
-	private void consultarContar() {
+	private void consultarConta() {
 		
 	}
 	
@@ -187,12 +247,29 @@ public class Tp2App {
 		
 	}
 	
-	// MŽtodo auxiliar da execu‹o da cria‹o de conta
+	/**
+	 *  MŽtodo auxiliar da execu‹o da cria‹o de conta
+	 */
 	private void criarConta() {
+		u.pl("Informe o nœmero da conta.");
+		int numero = entrada.nextInt();
+		u.pl("Informe o proprietario da conta.");
+		String proprietario = entrada.next();
+		u.pl("Informe o saldo inicail da conta.");
+		float saldo = entrada.nextFloat();
+		selecionarTipoConta();
+		byte tipo = selecionarTipoConta();
+		if (tipo == 3){			
+			u.pl("Informe o limite");
+			float limite = entrada.nextFloat();
+		}
 		
+		agencia.criarConta(numero, proprietario, saldo, tipo, limite);
 	}
 	
-	// MŽtodo respons‡vel por pausar a execu‹o atŽ o usu‡rio digitar ENTER
+	/**
+	 *  MŽtodo respons‡vel por pausar a execu‹o atŽ o usu‡rio digitar ENTER
+	 */
 	private void pausar() {
 		
 	}
