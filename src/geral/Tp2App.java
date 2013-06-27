@@ -160,26 +160,25 @@ public class Tp2App {
 					agencia.listarContas();
 				    break;
 	
-	
 				case 6:
-	
+					u.pl("6 - Consultar dados da conta (tarifado p/ poupanca)");
+					u.pl("");
+					u.p("Informe o numero da conta: ");
+					int numero = entrada.nextInt();
+					agencia.consultarContas(numero);
 				    break;
-	
 	
 				case 7:
 	
 				    break;
 	
-	
 				case 8:
 	
 				    break;
 	
-	
 				case 9:
 	
 				    break;
-	
 	
 				case 10:
 	
