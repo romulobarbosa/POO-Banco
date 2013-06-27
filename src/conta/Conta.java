@@ -1,5 +1,6 @@
 package conta;
 
+import execao.ExcecaoNumeroInvalido;
 import execao.ExcecaoSaqueInvalido;
 import execao.ExcecaoValorNegativo;
 import geral.Utilitarios;
@@ -43,7 +44,15 @@ public abstract class Conta {
  * @param proprietario
  * @param saldo
  */
-	public Conta(int numero, String proprietario, float saldo) {
+	public Conta(int numero, String proprietario, float saldo) throws ExcecaoNumeroInvalido, ExcecaoValorNegativo {
+		if (numero < 0) {
+			throw new ExcecaoNumeroInvalido("Numero da conta nao pode ser negativo.");
+		}
+		
+		if (saldo < 0) {
+			throw new ExcecaoValorNegativo("Saldo inicial nao pode ser negativo.");
+		}
+		
 		this.numero = numero;
 		this.proprietario = proprietario;
 		this.saldo = saldo;
