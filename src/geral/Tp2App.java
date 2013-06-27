@@ -151,7 +151,7 @@ public class Tp2App {
 					sacar();
 					break;
 				case 4:
-	
+					depositar();
 				    break;
 	
 				case 5:
@@ -233,7 +233,12 @@ public class Tp2App {
 	
 	// Método auxiliar da execução de um depósito
 	private void depositar() {
-		
+		u.pl("4 - Depositar");
+		u.pl("");
+		u.p("Informe o numero da conta e o valor de deposito:");
+		int numero = entrada.nextInt();
+		float valor = entrada.nextFloat();
+		agencia.depositar(numero, valor);	
 	}
 	
 	/**
