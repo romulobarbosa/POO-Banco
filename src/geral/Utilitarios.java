@@ -1,7 +1,7 @@
 package geral;
 public class Utilitarios {
 
-	public static void pl(String linha){
+	public void pl(String linha){
 		System.out.println(linha);
 	}
 	
@@ -14,7 +14,7 @@ public class Utilitarios {
 		return linha;
 	}
 	
-	public static void p(String linha){
+	public void p(String linha){
 		System.out.print(linha);
 	}
 }
