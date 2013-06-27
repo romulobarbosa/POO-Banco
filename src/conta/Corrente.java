@@ -8,7 +8,7 @@ public class Corrente extends Conta {
 /**
  * A tarifa de manutenção da conta.
  */
-	private float tarifaManutencao;
+	private float tarifaManutencao = (float) 12.5;
 
 /**
  * Cria uma nova instância e inicializa atributos.
