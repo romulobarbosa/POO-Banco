@@ -1,10 +1,21 @@
 package conta;
 
 import execao.ExcecaoNumeroInvalido;
+import execao.ExcecaoSaldoInsuficiente;
 import execao.ExcecaoValorNegativo;
 
 public class Poupanca extends Conta {
 
+/**
+ * A tarifa cobrada por consulta excedente ao saldo.
+ */
+	private static final float TARIFA_CONSULTA = (float) 1.1;
+
+/**
+ * A quantidade de consultas realizadas.
+ */
+	private int quantidadeConsultas = 0;
+	
 /**
  * Cria uma nova inst‰ncia e inicializa atributos.
  * 
@@ -16,6 +27,27 @@ public class Poupanca extends Conta {
  */
 	public Poupanca(int numero, String proprietario, float saldo) throws ExcecaoNumeroInvalido, ExcecaoValorNegativo {
 		super(numero, proprietario, saldo);
+	}
+	
+/**
+ * ObtŽm o saldo da poupana, considerando o nœmero de consultas realizadas.
+ * 
+ * @return saldo
+ * @throws ExcecaoSaldoInsuficiente
+ */
+	public float getSaldo() throws ExcecaoSaldoInsuficiente {
+		float saldo = super.getSaldo();
+		
+		quantidadeConsultas++;
+		
+		if (quantidadeConsultas > 2) {
+			if (saldo < (float) 1.1) {
+				throw new ExcecaoSaldoInsuficiente("O saldo da conta nao e' suficiente para realizar a consulta.");
+			}
+			super.sacar(TARIFA_CONSULTA);
+		}
+		
+		return super.getSaldo();
 	}
 
 	@Override
