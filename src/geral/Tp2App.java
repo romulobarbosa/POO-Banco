@@ -169,7 +169,13 @@ public class Tp2App {
 				    break;
 	
 				case 7:
-	
+					u.pl("7 - Reajustar poupanca");
+					u.pl("");
+					u.p("Informe o numero da conta e a taxa (%) de reajuste: ");
+					int numeroConta = entrada.nextInt();
+					float taxa = entrada.nextFloat();
+					agencia.reajustarPoupanca(numero, taxa);
+					
 				    break;
 	
 				case 8:
