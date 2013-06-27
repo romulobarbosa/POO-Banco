@@ -151,33 +151,40 @@ public class Tp2App {
 					sacar();
 					break;
 				case 4:
-	
+					depositar();
 				    break;
 	
 				case 5:
-	
+					u.pl("5 - Listar contas existentes (nao tarifado");
+					u.pl("");
+					agencia.listarContas();
 				    break;
-	
 	
 				case 6:
-	
+					u.pl("6 - Consultar dados da conta (tarifado p/ poupanca)");
+					u.pl("");
+					u.p("Informe o numero da conta: ");
+					int numero = entrada.nextInt();
+					agencia.consultarContas(numero);
 				    break;
-	
 	
 				case 7:
-	
+					u.pl("7 - Reajustar poupanca");
+					u.pl("");
+					u.p("Informe o numero da conta e a taxa (%) de reajuste: ");
+					int numeroConta = entrada.nextInt();
+					float taxa = entrada.nextFloat();
+					agencia.reajustarPoupanca(numero, taxa);
+					
 				    break;
-	
 	
 				case 8:
 	
 				    break;
 	
-	
 				case 9:
 	
 				    break;
-	
 	
 				case 10:
 	
@@ -231,9 +238,16 @@ public class Tp2App {
 		
 	}
 	
-	// Método auxiliar da execução de um depósito
+	/**
+	 *  Método auxiliar da execução de um depósito
+	 */
 	private void depositar() {
-		
+		u.pl("4 - Depositar");
+		u.pl("");
+		u.p("Informe o numero da conta e o valor de deposito:");
+		int numero = entrada.nextInt();
+		float valor = entrada.nextFloat();
+		agencia.depositar(numero, valor);	
 	}
 	
 	/**
