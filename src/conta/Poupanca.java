@@ -44,10 +44,28 @@ public class Poupanca extends Conta {
 			if (saldo < (float) 1.1) {
 				throw new ExcecaoSaldoInsuficiente("O saldo da conta nao e' suficiente para realizar a consulta.");
 			}
+			
 			super.sacar(TARIFA_CONSULTA);
 		}
 		
 		return super.getSaldo();
+	}
+
+/**
+ * Reajusta o saldo da poupana.
+ * 
+ * @param taxa
+ * @throws ExcecaoValorNegativo
+ */
+	public void reajustar(float taxa) throws ExcecaoValorNegativo {
+		if (taxa < 0) {
+			throw new ExcecaoValorNegativo("A taxa de juros nao pode ser negativa.");
+		}
+		
+		float saldo = super.getSaldo();
+		float reajuste = (saldo * taxa) - saldo;
+		
+		super.depositar(reajuste);
 	}
 
 	@Override
