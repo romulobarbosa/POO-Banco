@@ -140,12 +140,11 @@ public class Tp2App {
 		} else {
 			switch (opcao) {
 				case 1:
-
 					criarConta();
 					break;
 				
 				case 2:
-					
+					cancelarConta();
 					break;
 					
 				case 3:
@@ -242,9 +241,13 @@ public class Tp2App {
 		
 	}
 	
-	// Método auxiliar da execução do cancelamento de conta
+	/**
+	 *  Método auxiliar da execução do cancelamento de conta
+	 */
 	private void cancelarConta() {
-		
+		u.pl("Informe o numero da conta");
+		int numero = entrada.nextInt();
+		agencia.cancelarConta(numero);
 	}
 	
 	/**
@@ -263,7 +266,6 @@ public class Tp2App {
 			u.pl("Informe o limite");
 			float limite = entrada.nextFloat();
 		}
-		
 		agencia.criarConta(numero, proprietario, saldo, tipo, limite);
 	}
 	
