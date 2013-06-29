@@ -7,9 +7,8 @@ public class ExcecaoContaExistente extends RuntimeException {
 	public ExcecaoContaExistente(String message) {
 		// super(message);
 		u.pl(u.t(15, "*"));
-		u.pl("Ocorreu um erro na validacao da opcao. Tente novamente.");
-		u.p("Detalhe do erro: ExcecaoOpcaoInvalida: " + message);
+		u.pl("Ocorreu um erro na criacao da conta. Tente novamente.");
+		u.p("Detalhe do erro: ExcecaoContaExistente: " + message);
 		u.pl(u.t(15, "*"));
 	}
-
 }
