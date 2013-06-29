@@ -42,6 +42,11 @@ public class Especial extends Corrente {
 			throw new ExcecaoValorNegativo("Limite de credito deve ser positivo.");
 		}
 	}
+	
+	@Override
+	public String listarDados() {
+		return "Nœmero: " + this.getNumero() + ", Propriet‡rio: " + this.getProprietario() + ", Saldo: " + this.getSaldo();
+	}
 
 	@Override
 	public String getTipoConta() {
