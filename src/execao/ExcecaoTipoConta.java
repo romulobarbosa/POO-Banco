@@ -7,8 +7,8 @@ public class ExcecaoTipoConta extends RuntimeException {
 	public ExcecaoTipoConta(String message) {
 		// super(message);
 		u.pl(u.t(15, "*"));
-		u.pl("");
-		u.pl("");
+		u.pl("Ocorreu um erro na operação. Tente novamente.");
+		u.pl("Detalhe do erro: ExcecaoTipoConta: " + message);
 		u.pl(u.t(15, "*"));
 	}
 
