@@ -3,7 +3,7 @@ package conta;
 import execao.ExcecaoNumeroInvalido;
 import execao.ExcecaoValorNegativo;
 
-public class Especial extends Conta {
+public class Especial extends Corrente {
 	
 /**
  * A taxa de juros sobre o valor emprestado.
@@ -34,8 +34,13 @@ public class Especial extends Conta {
  * @throws ExcecaoNumeroInvalido
  * @throws ExcecaoValorNegativo
  */
-	public Especial(int numero, String proprietario, float saldo) throws ExcecaoNumeroInvalido, ExcecaoValorNegativo {
+	public Especial(int numero, String proprietario, float saldo, float limite) throws ExcecaoNumeroInvalido, ExcecaoValorNegativo {
 		super(numero, proprietario, saldo);
+		
+		if (limite <= 0) {
+			this.limite = (float) 200.0;
+			throw new ExcecaoValorNegativo("Limite de credito deve ser positivo.");
+		}
 	}
 
 	@Override
