@@ -196,6 +196,7 @@ public class Tp2App {
 				case 10:
 					u.pl("10 - Finalizar programa");
 					u.pl("");
+					
 				    break;
 			}
 		}
@@ -252,7 +253,7 @@ public class Tp2App {
 	 */
 	private void reajustarPoupanca() {
 		u.p("Informe o numero da conta e a taxa (%) de reajuste: ");
-		int numeroConta = entrada.nextInt();
+		int numero = entrada.nextInt();
 		float taxa = entrada.nextFloat();
 		agencia.reajustarPoupanca(numero, taxa);
 	}
@@ -319,7 +320,8 @@ public class Tp2App {
 	 *  Método responsável por pausar a execução até o usuário digitar ENTER
 	 */
 	private void pausar() {
-		
-	}
-	
+		u.pl("Pressione ENTER para continuar...");
+		entrada.nextLine();
+		construirMenu();
+	}	
 }
