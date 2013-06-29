@@ -179,7 +179,9 @@ public class Tp2App {
 				    break;
 	
 				case 8:
-	
+					u.pl("8 - Cobrar tarifa conta corrente ou especial");
+					u.pl("");
+					cobrarTarifa();
 				    break;
 	
 				case 9:
@@ -223,9 +225,13 @@ public class Tp2App {
 		
 	}
 	
-	// Método auxiliar da execução da cobrança de tarifa de conta corrente
+	/**
+	 *  Método auxiliar da execução da cobrança de tarifa de conta corrente
+	 */
 	private void cobrarTarifa() {
-		
+		u.p("Informe o numero da conta:");
+		int numero = entrada.nextInt();
+		agencia.cobrarTarifa(numero);
 	}
 	
 	// Método auxiliar da execução de reajuste de conta poupança
