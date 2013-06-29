@@ -185,7 +185,9 @@ public class Tp2App {
 				    break;
 	
 				case 9:
-	
+					u.pl("9 - Cobrar juros conta especial");
+					u.pl("");
+					cobrarJuros();
 				    break;
 	
 				case 10:
@@ -220,9 +222,13 @@ public class Tp2App {
 		
 	}
 	
-	// Método auxiliar da execução da cobrança de juros de conta especial
+	/**
+	 *  Método auxiliar da execução da cobrança de juros de conta especial
+	 */
 	private void cobrarJuros() {
-		
+		u.p("Informe o numero da conta:");
+		int numero = entrada.nextInt();
+		agencia.cobrarJuros(numero);
 	}
 	
 	/**
