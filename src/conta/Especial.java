@@ -16,6 +16,16 @@ public class Especial extends Conta {
 	private float limite;
 	
 /**
+ * O valor emprestado ao usuário (parcela do limite de crédito utilizada).
+ */
+	private float valorEmprestado;
+	
+/**
+ * Os juros cobrados sobre o valor emprestado.
+ */
+	private float jurosCobrados;
+	
+/**
  * Construtor da classe
  * 
  * @param numero
