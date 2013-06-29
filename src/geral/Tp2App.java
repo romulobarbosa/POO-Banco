@@ -11,6 +11,8 @@ public class Tp2App {
 	private Scanner entrada = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		executar();
+		
 		/*
 		Agencia agencia = new Agencia();
 		
@@ -126,8 +128,7 @@ public class Tp2App {
 		u.pl("10 - Finalizar programa");
 		
 		int opcao = entrada.nextInt();
-		validarOpcao(opcao);
-		
+		validarOpcao(opcao);		
 	}
 	
 	/**
@@ -196,6 +197,7 @@ public class Tp2App {
 				case 10:
 					u.pl("10 - Finalizar programa");
 					u.pl("");
+					
 				    break;
 			}
 		}
@@ -224,9 +226,11 @@ public class Tp2App {
 		return entrada.nextByte();
 	}
 	
-	// Método que inicia a execução da aplicação
+	/**
+	 *  Método que inicia a execução da aplicação
+	 */
 	public void executar() {
-		
+		construirMenu();
 	}
 	
 	/**
@@ -252,7 +256,7 @@ public class Tp2App {
 	 */
 	private void reajustarPoupanca() {
 		u.p("Informe o numero da conta e a taxa (%) de reajuste: ");
-		int numeroConta = entrada.nextInt();
+		int numero = entrada.nextInt();
 		float taxa = entrada.nextFloat();
 		agencia.reajustarPoupanca(numero, taxa);
 	}
@@ -300,7 +304,7 @@ public class Tp2App {
 	 */
 	private void criarConta() {
 		float limite = 0;
-		// Lista os tipos de conta		
+		// Lista os tipos de conta
 		selecionarTipoConta();
 		byte tipo = selecionarTipoConta();
 		
@@ -319,7 +323,8 @@ public class Tp2App {
 	 *  Método responsável por pausar a execução até o usuário digitar ENTER
 	 */
 	private void pausar() {
-		
-	}
-	
+		u.pl("Pressione ENTER para continuar...");
+		entrada.nextLine();
+		construirMenu();
+	}	
 }
