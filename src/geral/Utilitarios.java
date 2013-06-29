@@ -5,13 +5,12 @@ public class Utilitarios {
 		System.out.println(linha);
 	}
 	
-	public String t(int num){
-		String linha = "";
+	public String t(int num, String caractere){
 		while (num > 0){
-			linha += "=";
+			caractere += "=";
 			num--;
 		}
-		return linha;
+		return caractere;
 	}
 	
 	public void p(String linha){
