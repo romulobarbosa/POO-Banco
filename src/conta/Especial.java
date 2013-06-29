@@ -9,6 +9,11 @@ public class Especial extends Conta {
  * A taxa de juros sobre o valor emprestado.
  */
 	private static final float TAXA_JURO = (float) 0.08;
+
+/**
+ * O limite de crédito da conta.
+ */
+	private float limite;
 	
 /**
  * Construtor da classe
