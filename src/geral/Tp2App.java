@@ -140,48 +140,62 @@ public class Tp2App {
 		} else {
 			switch (opcao) {
 				case 1:
-
+					u.pl("1 - Criar Conta");
+					u.pl("");
 					criarConta();
 					break;
 				
 				case 2:
-					
+					u.pl("2 - Cancelar Conta");
+					u.pl("");
+					cancelarConta();
 					break;
 					
 				case 3:
-					
+					u.pl("3 - Sacar");
+					u.pl("");
+					sacar();
 					break;
+					
 				case 4:
-	
+					u.pl("4 - Depositar");
+					u.pl("");
+					depositar();
 				    break;
 	
 				case 5:
-	
+					u.pl("5 - Listar contas existentes (nao tarifado");
+					u.pl("");
+					agencia.listarContas();
 				    break;
-	
 	
 				case 6:
-	
+					u.pl("6 - Consultar dados da conta (tarifado p/ poupanca)");
+					u.pl("");
+					consultarConta();
 				    break;
-	
 	
 				case 7:
-	
+					u.pl("7 - Reajustar poupanca");
+					u.pl("");
+					reajustarPoupanca();					
 				    break;
-	
 	
 				case 8:
-	
+					u.pl("8 - Cobrar tarifa conta corrente ou especial");
+					u.pl("");
+					cobrarTarifa();
 				    break;
-	
 	
 				case 9:
-	
+					u.pl("9 - Cobrar juros conta especial");
+					u.pl("");
+					cobrarJuros();
 				    break;
 	
-	
 				case 10:
-	
+					u.pl("10 - Finalizar programa");
+					u.pl("");
 				    break;
 			}
 		}
@@ -196,7 +210,10 @@ public class Tp2App {
 		
 	}
 	
-	// Método responsável por exibir um submenu de tipos de conta e obter o tipo escolhido pelo usuário
+	/**
+	 *  Método responsável por exibir um submenu de tipos de conta e obter o tipo escolhido pelo usuário
+	 * @return
+	 */
 	private byte selecionarTipoConta(){
 		u.pl("Tipo de conta:");
 		u.pl("");
@@ -212,58 +229,89 @@ public class Tp2App {
 		
 	}
 	
-	// Método auxiliar da execução da cobrança de juros de conta especial
+	/**
+	 *  Método auxiliar da execução da cobrança de juros de conta especial
+	 */
 	private void cobrarJuros() {
-		
+		u.p("Informe o numero da conta:");
+		int numero = entrada.nextInt();
+		agencia.cobrarJuros(numero);
 	}
 	
-	// Método auxiliar da execução da cobrança de tarifa de conta corrente
+	/**
+	 *  Método auxiliar da execução da cobrança de tarifa de conta corrente
+	 */
 	private void cobrarTarifa() {
-		
+		u.p("Informe o numero da conta:");
+		int numero = entrada.nextInt();
+		agencia.cobrarTarifa(numero);
 	}
 	
-	// Método auxiliar da execução de reajuste de conta poupança
+	/**
+	 *  Método auxiliar da execução de reajuste de conta poupança
+	 */
 	private void reajustarPoupanca() {
-		
+		u.p("Informe o numero da conta e a taxa (%) de reajuste: ");
+		int numeroConta = entrada.nextInt();
+		float taxa = entrada.nextFloat();
+		agencia.reajustarPoupanca(numero, taxa);
 	}
 	
-	// Método auxiliar da execução da consulta de dados da conta
+	/**
+	 *  Método auxiliar da execução da consulta de dados da conta
+	 */
 	private void consultarConta() {
-		
+		u.p("Informe o numero da conta: ");
+		int numero = entrada.nextInt();
+		agencia.consultarContas(numero);
 	}
 	
-	// Método auxiliar da execução de um depósito
+	/**
+	 *  Método auxiliar da execução de um depósito
+	 */
 	private void depositar() {
-		
+		u.p("Informe o numero da conta e o valor de deposito:");
+		int numero = entrada.nextInt();
+		float valor = entrada.nextFloat();
+		agencia.depositar(numero, valor);	
 	}
 	
-	// Método auxiliar da execução de um saque
+	/**
+	 *  Método auxiliar da execução de um saque
+	 */
 	private void sacar() {
-		
+		u.p("Informe o numero da conta e o valor de saque:");
+		int numero = entrada.nextInt();
+		float valor = entrada.nextFloat();
+		agencia.sacar(numero, valor);
 	}
 	
-	// Método auxiliar da execução do cancelamento de conta
+	/**
+	 *  Método auxiliar da execução do cancelamento de conta
+	 */
 	private void cancelarConta() {
-		
+		u.pl("Informe o numero da conta");
+		int numero = entrada.nextInt();
+		agencia.cancelarConta(numero);
 	}
 	
 	/**
 	 *  Método auxiliar da execução da criação de conta
 	 */
 	private void criarConta() {
-		u.pl("Informe o número da conta.");
-		int numero = entrada.nextInt();
-		u.pl("Informe o proprietario da conta.");
-		String proprietario = entrada.next();
-		u.pl("Informe o saldo inicail da conta.");
-		float saldo = entrada.nextFloat();
+		float limite = 0;
+		// Lista os tipos de conta		
 		selecionarTipoConta();
 		byte tipo = selecionarTipoConta();
+		
+		u.pl("Informe o numero, proprietario e saldo da conta: ");
+		int numero = entrada.nextInt();
+		String proprietario = entrada.next();
+		float saldo = entrada.nextFloat();
 		if (tipo == 3){			
 			u.pl("Informe o limite");
-			float limite = entrada.nextFloat();
+			limite = entrada.nextFloat();
 		}
-		
 		agencia.criarConta(numero, proprietario, saldo, tipo, limite);
 	}
 	
