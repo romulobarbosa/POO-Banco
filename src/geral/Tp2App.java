@@ -11,6 +11,8 @@ public class Tp2App {
 	private Scanner entrada = new Scanner(System.in);
 
 	public static void main(String[] args) {
+		executar();
+		
 		/*
 		Agencia agencia = new Agencia();
 		
@@ -126,8 +128,7 @@ public class Tp2App {
 		u.pl("10 - Finalizar programa");
 		
 		int opcao = entrada.nextInt();
-		validarOpcao(opcao);
-		
+		validarOpcao(opcao);		
 	}
 	
 	/**
@@ -225,9 +226,11 @@ public class Tp2App {
 		return entrada.nextByte();
 	}
 	
-	// Método que inicia a execução da aplicação
+	/**
+	 *  Método que inicia a execução da aplicação
+	 */
 	public void executar() {
-		
+		construirMenu();
 	}
 	
 	/**
@@ -301,7 +304,7 @@ public class Tp2App {
 	 */
 	private void criarConta() {
 		float limite = 0;
-		// Lista os tipos de conta		
+		// Lista os tipos de conta
 		selecionarTipoConta();
 		byte tipo = selecionarTipoConta();
 		
