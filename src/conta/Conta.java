@@ -109,7 +109,7 @@ public abstract class Conta {
 		
 		this.saldo = this.saldo - valor;
 		
-		u.pl("Saque realizado com sucesso. Saldo da conta Ž:" + this.getSaldo());
+		u.pl("Saque realizado com sucesso. Saldo da conta Ž: " + this.getSaldo());
 	}
 	
 /**
