@@ -47,6 +47,27 @@ public class Especial extends Corrente {
 	public String listarDados() {
 		return "Número: " + this.getNumero() + ", Proprietário: " + this.getProprietario() + ", Saldo: " + this.getSaldo();
 	}
+	
+	@Override
+	public void sacar(float valor) {
+		
+	}
+	
+	@Override
+	public float getSaldo() {
+		return super.getSaldo();
+	}
+
+/**
+ * Realiza a cobrança de juros da conta.
+ */
+	public void cobrarJuros() {
+		
+	}
+	
+	public void depositar(float valor) {
+		
+	}
 
 	@Override
 	public String getTipoConta() {
