@@ -115,7 +115,7 @@ public class Tp2App {
 	 *  Método responsável por construir o menu de opções do usuário
 	 */
 	private void construirMenu() {
-		u.pl(u.t(40));
+		u.pl(u.t(54, "="));
 		u.pl("1 - Criar conta");
 		u.pl("2 - Cancelar conta");
 		u.pl("3 - Sacar");
