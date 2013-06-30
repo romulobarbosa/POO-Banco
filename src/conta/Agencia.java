@@ -1,7 +1,13 @@
 package conta;
 import java.util.ArrayList;
 
+import conta.Corrente;
+import conta.Poupanca;
+import conta.Especial;
+
+import execao.ExcecaoContaExistente;
 import execao.ExcecaoContaInexistente;
+import execao.ExcecaoFaltaEspaco;
 
 /**
  * Agencia
@@ -56,30 +62,38 @@ public class Agencia {
 		throw new ExcecaoContaInexistente("A conta informada nao existe.");
 	}
 	
+
 /**
- * Cria conta
+ * MŽtodo de cria‹o da conta. O limite s— tem sentido quando a conta Ž especial. Do contr‡rio, ele e ignorado.
  * 
- * @param numero
- * @param proprietario
- * @param saldo
- * @return
+ * @param numero O nœmero da conta.
+ * @param proprietario O propriet‡rio da conta.
+ * @param saldo O saldo inicial da conta.
+ * @param tipo O tipo da conta.
+ * @param limite O limite de crŽdito para a conta do tipo ESPECIAL.
+ * @throws ExcecaoFaltaEspaco Se o nœmero m‡ximo de contas j‡ houver sido cadastrado.
+ * @throws ExcecaoContaExistente Se o nœmero da conta informado como par‰metro j‡ existe na agncia.
  */
-	public static String criarConta(int numero, String proprietario, float saldo) {
+	public void criarConta(int numero, String proprietario, float saldo, byte tipo, float limite) throws ExcecaoFaltaEspaco, ExcecaoContaExistente {
 		if (contas.size() >= MAX_CONTAS) {
-			return "Numero maximo de contas ja cadastrado no sistema.";
+			throw new ExcecaoFaltaEspaco("Numero maximo de contas ja cadastrado.");
 		}
 		
-		if (getConta(numero) != null) {
-			return "Ja existe uma conta com esse numero";
-		}
-			
-		if (saldo < 0 ) {
-			return "Impossivel cadastrar valor negativo como saldo.";
+		if (this.getConta(numero) != null) {
+			throw new ExcecaoContaExistente("Nœmero de conta j‡ existe.");
 		}
 		
-		contas.add(new Conta(numero, proprietario, saldo));
-		
-		return "Conta cadastrada com sucesso.";
+		switch (tipo) {
+			case 1:
+				contas.add(new Corrente(numero, proprietario, saldo));				
+				break;
+			case 2:
+				contas.add(new Poupanca(numero, proprietario, saldo));				
+				break;
+			case 3:
+				contas.add(new Especial(numero, proprietario, saldo, limite));				
+				break;
+		}
 	}	
 	
 /**
