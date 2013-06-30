@@ -2,7 +2,7 @@ package execao;
 import geral.Utilitarios;
 
 @SuppressWarnings("serial")
-public class ExcecaoFaltaEspaco extends RuntimeException {
+public class ExcecaoFaltaEspaco extends Exception {
 	private static Utilitarios u = new Utilitarios();
 
 	public ExcecaoFaltaEspaco(String message) {
