@@ -3,6 +3,8 @@ import conta.Agencia;
 import execao.ExcecaoContaExistente;
 import execao.ExcecaoNumeroInvalido;
 import execao.ExcecaoOpcaoInvalida;
+import execao.ExcecaoValorNegativo;
+
 import java.util.Scanner; 
 import geral.Utilitarios;
 
@@ -215,29 +217,23 @@ public class Tp2App {
 	/**
 	 *  Método auxiliar da execução da criação de conta
 	 */
-	private void criarConta() {
-		try {	
-			float limite = 0;
-			// Lista os tipos de conta
-			selecionarTipoConta();
-			byte tipo = selecionarTipoConta();
+	private void criarConta() {	
+		float limite = 0;
+		// Lista os tipos de conta
+		selecionarTipoConta();
+		byte tipo = selecionarTipoConta();
+		
+		u.pl("Informe o numero, proprietario e saldo da conta: ");
+		int numero = entrada.nextInt();
+		String proprietario = entrada.next();
+		float saldo = entrada.nextFloat();
+		if (tipo == 3){			
+			u.pl("Informe o limite");
+			limite = entrada.nextFloat();
+		}
+		
+		agencia.criarConta(numero, proprietario, saldo, tipo, limite);
 			
-			u.pl("Informe o numero, proprietario e saldo da conta: ");
-			int numero = entrada.nextInt();
-			String proprietario = entrada.next();
-			float saldo = entrada.nextFloat();
-			if (tipo == 3){			
-				u.pl("Informe o limite");
-				limite = entrada.nextFloat();
-			}
-			agencia.criarConta(numero, proprietario, saldo, tipo, limite);
-		} catch (ExcecaoOpcaoInvalida e) {
-			tratarExcecao("Ocorreu um erro na validacao da opcao.", e);
-        } catch (ExcecaoContaExistente e) {
-			tratarExcecao("Ocorreu um erro na criacao da conta.", e);
-        } catch (ExcecaoNumeroInvalido e) {
-			tratarExcecao("Ocorreu um erro na criacao da conta.", e);
-        }
 	}
 	
 	/**
