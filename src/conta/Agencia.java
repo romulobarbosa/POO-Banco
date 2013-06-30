@@ -1,6 +1,6 @@
 package conta;
-import java.util.ArrayList;
 
+import java.util.ArrayList;
 import conta.Corrente;
 import conta.Poupanca;
 import conta.Especial;
@@ -8,6 +8,8 @@ import geral.Utilitarios;
 import execao.ExcecaoContaExistente;
 import execao.ExcecaoContaInexistente;
 import execao.ExcecaoFaltaEspaco;
+import execao.ExcecaoTipoConta;
+import execao.ExcecaoValorNegativo;
 
 /**
  * Agencia
@@ -140,6 +142,23 @@ public class Agencia {
 		
 		return conta.listarDados();
 	}
+	
+/**
+ * Aplica um reajuste a uma conta de poupança.
+ * 
+ * @param numero
+ * @param taxa
+ * @throws ExcecaoTipoConta
+ */
+	public void reajustarPoupanca(int numero, float taxa) throws ExcecaoTipoConta {
+		Poupanca conta = (Poupanca) this.getConta(numero);
+		
+		if (conta.getTipoConta() != "Poupanca")
+			throw new ExcecaoTipoConta("A conta informada nao e' uma POUPANCA.");
+		
+		conta.reajustar(taxa);
+	}
+
 	
 /**
  * Saca um valor da conta

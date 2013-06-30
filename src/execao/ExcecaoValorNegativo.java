@@ -1,7 +1,8 @@
 package execao;
 import geral.Utilitarios;
 
-public class ExcecaoValorNegativo extends RuntimeException {
+@SuppressWarnings("serial")
+public class ExcecaoValorNegativo extends Exception {
 	private static Utilitarios u = new Utilitarios();
 
 	public ExcecaoValorNegativo(String message) {
