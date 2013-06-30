@@ -1,5 +1,6 @@
 package geral;
 import conta.Agencia;
+import execao.ExcecaoContaExistente;
 import execao.ExcecaoOpcaoInvalida;
 import java.util.Scanner; 
 import geral.Utilitarios;
@@ -106,7 +107,6 @@ public class Tp2App {
 				case 10:
 					u.pl("10 - Finalizar programa");
 					u.pl("");
-					
 				    break;
 			}
 		}
@@ -118,8 +118,10 @@ public class Tp2App {
 	 * @param e
 	 */
 	private void tratarExcecao(String msg, Exception e) {
-		u.pl("Ocorreu um erro na execução do sistema");
-		u.pl(msg);
+		u.t(15, "*");
+		u.pl(msg + " Tente novamente.");
+		u.pl("Detalhes do erro: " + e.getMessage());
+		u.t(15, "*");
 	}
 	
 	/**
@@ -213,20 +215,26 @@ public class Tp2App {
 	 *  Método auxiliar da execução da criação de conta
 	 */
 	private void criarConta() {
-		float limite = 0;
-		// Lista os tipos de conta
-		selecionarTipoConta();
-		byte tipo = selecionarTipoConta();
-		
-		u.pl("Informe o numero, proprietario e saldo da conta: ");
-		int numero = entrada.nextInt();
-		String proprietario = entrada.next();
-		float saldo = entrada.nextFloat();
-		if (tipo == 3){			
-			u.pl("Informe o limite");
-			limite = entrada.nextFloat();
-		}
-		agencia.criarConta(numero, proprietario, saldo, tipo, limite);
+		try {	
+			float limite = 0;
+			// Lista os tipos de conta
+			selecionarTipoConta();
+			byte tipo = selecionarTipoConta();
+			
+			u.pl("Informe o numero, proprietario e saldo da conta: ");
+			int numero = entrada.nextInt();
+			String proprietario = entrada.next();
+			float saldo = entrada.nextFloat();
+			if (tipo == 3){			
+				u.pl("Informe o limite");
+				limite = entrada.nextFloat();
+			}
+			agencia.criarConta(numero, proprietario, saldo, tipo, limite);
+		} catch (ExcecaoOpcaoInvalida e) {
+			tratarExcecao("Ocorreu um erro na validacao da opcao.", e);
+        } catch (ExcecaoContaExistente e) {
+			tratarExcecao("Ocorreu um erro na criacao da conta.", e);
+        }
 	}
 	
 	/**
