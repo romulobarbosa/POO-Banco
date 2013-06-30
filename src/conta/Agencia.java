@@ -105,15 +105,15 @@ public class Agencia {
 	}
 
 /**
- * Lista todas as contas
+ * Método que realiza a listagem das contas cadastradas. Não há cobrança de tarifas na execução deste método.
  * 
  * @return
  */
-	public static String listarContas() {
+	public String listarContas() {
 		String listaDeContas = "";
 		
 		for (int i = 0; i < contas.size(); i++) {
-			listaDeContas += contas.get(i).getNumero() + " - " + contas.get(i).getProprietario() + " - " + contas.get(i).getSaldo() + "\n";
+			listaDeContas += contas.get(i).listarDados();
 		}
 		
 		return listaDeContas;

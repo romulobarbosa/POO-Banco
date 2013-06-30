@@ -3,9 +3,12 @@ package conta;
 import execao.ExcecaoNumeroInvalido;
 import execao.ExcecaoSaldoInsuficiente;
 import execao.ExcecaoValorNegativo;
+import geral.Utilitarios;
 
 public class Poupanca extends Conta {
 
+	private Utilitarios u = new Utilitarios();
+	
 /**
  * A tarifa cobrada por consulta excedente ao saldo.
  */
@@ -73,12 +76,17 @@ public class Poupanca extends Conta {
  * @return
  */
 	public String listarDados() {
-		return super.listarDados();
+		return "Tipo de conta: " 						+ this.getTipoConta() 		+ "\n" +
+				"Numero da conta: " 					+ this.getNumero() 			+ "\n" +
+				"Proprietario: " 						+ this.getProprietario() 	+ "\n" +
+				"Quantidade de consultas realizadas: "	+ this.quantidadeConsultas 	+ "\n" +
+				"Tarifa por consulta excedente: " 		+ this.TARIFA_CONSULTA		+ "\n" +
+				u.t(24, "=");
 	}
 
 	@Override
 	public String getTipoConta() {
-		return null;
+		return "Poupanca";
 	}
 	
 }
