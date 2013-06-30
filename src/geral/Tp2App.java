@@ -13,6 +13,13 @@ public class Tp2App {
 	private static Utilitarios u = new Utilitarios();
 	private Agencia agencia = new Agencia();
 	private Scanner entrada = new Scanner(System.in);
+	private float saldo;
+	private float valor;
+	private int numero;
+	private String proprietario;
+	private java.io.BufferedReader in;
+	private static int MAX_OP = 10;
+	
 
 	public static void main(String[] args) {
 		// executar();
@@ -49,7 +56,7 @@ public class Tp2App {
 	 * @param opcao
 	 */
 	private void validarOpcao(int opcao) throws ExcecaoOpcaoInvalida {
-		if(!(opcao > 0 && opcao < 11)) {
+		if(!(opcao > 0 && opcao <= MAX_OP)) {
 			throw new ExcecaoOpcaoInvalida("Opcao invalida");
 		} else {
 			switch (opcao) {
@@ -153,7 +160,7 @@ public class Tp2App {
 	 */
 	private void cobrarJuros() {
 		u.p("Informe o numero da conta:");
-		int numero = entrada.nextInt();
+		numero = entrada.nextInt();
 		agencia.cobrarJurosContaEspecial(numero);
 	}
 	
@@ -162,7 +169,7 @@ public class Tp2App {
 	 */
 	private void cobrarTarifa() {
 		u.p("Informe o numero da conta:");
-		int numero = entrada.nextInt();
+		numero = entrada.nextInt();
 		agencia.cobrarTarifa(numero);
 	}
 	
@@ -171,7 +178,7 @@ public class Tp2App {
 	 */
 	private void reajustarPoupanca() {
 		u.p("Informe o numero da conta e a taxa (%) de reajuste: ");
-		int numero = entrada.nextInt();
+		numero = entrada.nextInt();
 		float taxa = entrada.nextFloat();
 		agencia.reajustarPoupanca(numero, taxa);
 	}
@@ -181,7 +188,7 @@ public class Tp2App {
 	 */
 	private void consultarConta() {
 		u.p("Informe o numero da conta: ");
-		int numero = entrada.nextInt();
+		numero = entrada.nextInt();
 		agencia.consultarConta(numero);
 	}
 	
@@ -190,8 +197,8 @@ public class Tp2App {
 	 */
 	private void depositar() {
 		u.p("Informe o numero da conta e o valor de deposito:");
-		int numero = entrada.nextInt();
-		float valor = entrada.nextFloat();
+		numero = entrada.nextInt();
+		valor = entrada.nextFloat();
 		agencia.depositar(numero, valor);	
 	}
 	
@@ -200,8 +207,8 @@ public class Tp2App {
 	 */
 	private void sacar() {
 		u.p("Informe o numero da conta e o valor de saque:");
-		int numero = entrada.nextInt();
-		float valor = entrada.nextFloat();
+		numero = entrada.nextInt();
+		valor = entrada.nextFloat();
 		agencia.sacar(numero, valor);
 	}
 	
@@ -210,7 +217,7 @@ public class Tp2App {
 	 */
 	private void cancelarConta() {
 		u.pl("Informe o numero da conta");
-		int numero = entrada.nextInt();
+		numero = entrada.nextInt();
 		agencia.cancelarConta(numero);
 	}
 	
@@ -224,9 +231,9 @@ public class Tp2App {
 		byte tipo = selecionarTipoConta();
 		
 		u.pl("Informe o numero, proprietario e saldo da conta: ");
-		int numero = entrada.nextInt();
-		String proprietario = entrada.next();
-		float saldo = entrada.nextFloat();
+		numero = entrada.nextInt();
+		proprietario = entrada.next();
+		saldo = entrada.nextFloat();
 		if (tipo == 3){			
 			u.pl("Informe o limite");
 			limite = entrada.nextFloat();
