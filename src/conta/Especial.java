@@ -45,7 +45,11 @@ public class Especial extends Corrente {
 	
 	@Override
 	public String listarDados() {
-		return "Nœmero: " + this.getNumero() + ", Propriet‡rio: " + this.getProprietario() + ", Saldo: " + this.getSaldo();
+		return  super.listarDados() +
+				"Tarifa de manutencao: "	+ this.getSaldo() 			+ "\n" +
+				"Limite de credito: "		+ this.limite 				+ "\n" +
+				"Valor emprestado: "		+ this.valorEmprestado 		+ "\n" +
+				"Juros cobrados: "			+ this.jurosCobrados 		+ "\n";
 	}
 	
 	@Override
@@ -71,7 +75,7 @@ public class Especial extends Corrente {
 
 	@Override
 	public String getTipoConta() {
-		return null;
+		return "Especial";
 	}
 
 }
