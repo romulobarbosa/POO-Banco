@@ -2,7 +2,7 @@ package execao;
 import geral.Utilitarios;
 
 @SuppressWarnings("serial")
-public class ExcecaoContaInexistente extends RuntimeException {
+public class ExcecaoContaInexistente extends Exception {
 	private static Utilitarios u = new Utilitarios();
 
 	public ExcecaoContaInexistente(String message) {
