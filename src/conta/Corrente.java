@@ -2,11 +2,8 @@ package conta;
 
 import execao.ExcecaoNumeroInvalido;
 import execao.ExcecaoValorNegativo;
-import geral.Utilitarios;
 
 public class Corrente extends Conta {
-	
-	private Utilitarios u = new Utilitarios();
 	
 /**
  * A tarifa de manutenção da conta.
@@ -28,12 +25,8 @@ public class Corrente extends Conta {
 
 	@Override
 	public String listarDados() {
-		return "Tipo de conta: " 			+ this.getTipoConta() 		+ "\n" +
-				"Numero da conta: " 		+ this.getNumero() 			+ "\n" +
-				"Proprietario: " 			+ this.getProprietario() 	+ "\n" +
-				"Saldo: "					+ this.getSaldo() 			+ "\n" +
-				"Tarifa de manutencao: " 	+ this.tarifaManutencao		+ "\n" +
-				u.t(24, "=");
+		return super.listarDados() +
+				"Tarifa de manutencao: " 	+ this.tarifaManutencao		+ "\n";
 	}
 	
 	@Override

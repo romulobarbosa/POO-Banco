@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import conta.Corrente;
 import conta.Poupanca;
 import conta.Especial;
-
+import geral.Utilitarios;
 import execao.ExcecaoContaExistente;
 import execao.ExcecaoContaInexistente;
 import execao.ExcecaoFaltaEspaco;
@@ -15,6 +15,11 @@ import execao.ExcecaoFaltaEspaco;
  * @author romulo
  */
 public class Agencia { 
+
+/**
+ * Utilit‡rios
+ */
+	private Utilitarios u = new Utilitarios();
 
 /**
  * Constante para representar uma conta corrente.
@@ -114,9 +119,26 @@ public class Agencia {
 		
 		for (int i = 0; i < contas.size(); i++) {
 			listaDeContas += contas.get(i).listarDados();
+			listaDeContas += u.t(24, "=");
 		}
 		
 		return listaDeContas;
+	}
+	
+/**
+ * Consulta os dados de uma conta. Pode haver cobrana de tarifas na execu‹o deste mŽtodo, dependendo do tipo da conta e do nœmero de consultas realizadas.
+ * 
+ * @param numero
+ * @return
+ */
+	public String consultarConta(int numero) {
+		Conta conta = this.getConta(numero);
+		
+		if (conta.getTipoConta() == "Poupanca") {
+			conta.getSaldo();
+		}
+		
+		return conta.listarDados();
 	}
 	
 /**
@@ -142,6 +164,7 @@ public class Agencia {
 		
 		return "Saque efetuado com sucesso. Saldo atual: "+ getSaldo(numero);
 	}
+
 
 /**
  * Deposita um valor na conta

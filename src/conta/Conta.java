@@ -91,7 +91,10 @@ public abstract class Conta {
  * @return
  */
 	public String listarDados() {
-		return "Nœmero: " + this.getNumero() + ", Propriet‡rio: " + this.getProprietario() + ", Saldo: " + this.getSaldo();
+		return "Tipo de conta: " 			+ this.getTipoConta() 		+ "\n" +
+				"Numero da conta: " 		+ this.getNumero() 			+ "\n" +
+				"Proprietario: " 			+ this.getProprietario() 	+ "\n" +
+				"Saldo: "					+ this.getSaldo() 			+ "\n";
 	}
 
 /**

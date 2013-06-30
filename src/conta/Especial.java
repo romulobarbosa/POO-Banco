@@ -2,11 +2,8 @@ package conta;
 
 import execao.ExcecaoNumeroInvalido;
 import execao.ExcecaoValorNegativo;
-import geral.Utilitarios;
 
 public class Especial extends Corrente {
-	
-	private Utilitarios u = new Utilitarios();
 	
 /**
  * A taxa de juros sobre o valor emprestado.
@@ -48,15 +45,11 @@ public class Especial extends Corrente {
 	
 	@Override
 	public String listarDados() {
-		return "Tipo de conta: " 			+ this.getTipoConta() 		+ "\n" +
-				"Numero da conta: " 		+ this.getNumero() 			+ "\n" +
-				"Proprietario: " 			+ this.getProprietario() 	+ "\n" +
-				"Saldo: "					+ this.getSaldo() 			+ "\n" +
+		return  super.listarDados() +
 				"Tarifa de manutencao: "	+ this.getSaldo() 			+ "\n" +
 				"Limite de credito: "		+ this.limite 				+ "\n" +
 				"Valor emprestado: "		+ this.valorEmprestado 		+ "\n" +
-				"Juros cobrados: "			+ this.jurosCobrados 		+ "\n" +
-				u.t(24, "=");
+				"Juros cobrados: "			+ this.jurosCobrados 		+ "\n";
 	}
 	
 	@Override
