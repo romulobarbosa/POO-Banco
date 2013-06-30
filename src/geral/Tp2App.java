@@ -1,6 +1,7 @@
 package geral;
 import conta.Agencia;
 import execao.ExcecaoContaExistente;
+import execao.ExcecaoNumeroInvalido;
 import execao.ExcecaoOpcaoInvalida;
 import java.util.Scanner; 
 import geral.Utilitarios;
@@ -12,9 +13,9 @@ public class Tp2App {
 	private Scanner entrada = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		executar();
+		// executar();
 		
-		}// fecha a void main
+	}// fecha a void main
 	
 	/**
 	 *  Método responsável por construir o menu de opções do usuário
@@ -233,6 +234,8 @@ public class Tp2App {
 		} catch (ExcecaoOpcaoInvalida e) {
 			tratarExcecao("Ocorreu um erro na validacao da opcao.", e);
         } catch (ExcecaoContaExistente e) {
+			tratarExcecao("Ocorreu um erro na criacao da conta.", e);
+        } catch (ExcecaoNumeroInvalido e) {
 			tratarExcecao("Ocorreu um erro na criacao da conta.", e);
         }
 	}
