@@ -1,6 +1,7 @@
 package conta;
 
 import execao.ExcecaoNumeroInvalido;
+import execao.ExcecaoSaqueInvalido;
 import execao.ExcecaoValorNegativo;
 
 public class Corrente extends Conta {
@@ -22,15 +23,36 @@ public class Corrente extends Conta {
 	public Corrente(int numero, String proprietario, float saldo) throws ExcecaoNumeroInvalido, ExcecaoValorNegativo {
 		super(numero, proprietario, saldo);
 	}
+	
+/**
+ * Realiza cobrança mensal de tarifa de manutenção da conta. 
+ * 
+ * O saldo pode ficar negativo nesta operação. 
+ * Para isto o método deve habilitar as permissões especiais, fazer o débito da tarifa e desabilitar as permissões em seguida.
+ */
+	public void cobrarTarifa() {
+		boolean permissoesEspeciais = this.permissoesEspeciaisHabilitadas();
+		
+		if (permissoesEspeciais == false) {
+			this.habilitarPermissoesEspeciais();
+		}
+		
+		this.sacar(this.tarifaManutencao);
+		
+		if (permissoesEspeciais == false) {
+			this.deshabilitarPermissoesEspeciais();
+		}
+	}
 
 	@Override
 	public String listarDados() {
-		return "Número: " + this.getNumero() + ", Proprietário: " + this.getProprietario() + ", Saldo: " + this.getSaldo();
+		return super.listarDados() +
+				"Tarifa de manutencao: " 	+ this.tarifaManutencao		+ "\n";
 	}
 	
 	@Override
 	public String getTipoConta() {
-		return null;
+		return "Corrente";
 	}
 
 /**

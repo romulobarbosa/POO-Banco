@@ -1,5 +1,15 @@
 package conta;
+
 import java.util.ArrayList;
+import conta.Corrente;
+import conta.Poupanca;
+import conta.Especial;
+import geral.Utilitarios;
+import execao.ExcecaoContaExistente;
+import execao.ExcecaoContaInexistente;
+import execao.ExcecaoFaltaEspaco;
+import execao.ExcecaoTipoConta;
+import execao.ExcecaoValorNegativo;
 
 /**
  * Agencia
@@ -7,11 +17,31 @@ import java.util.ArrayList;
  * @author romulo
  */
 public class Agencia { 
+
+/**
+ * Utilitários
+ */
+	private Utilitarios u = new Utilitarios();
+
+/**
+ * Constante para representar uma conta corrente.
+ */
+	static final byte CORRENTE = 1;
+
+/**
+ * Constante para representar uma conta especial.
+ */
+	static final byte POUPANCA = 2;
+	
+/**
+ * Constante para representar uma poupança.
+ */
+	static final byte ESPECIAL = 3;
 	
 /**
  * Número máximo de contas
  */
-	private static byte MAX_CONTAS = 20;
+	private static final byte MAX_CONTAS = 20;
 	
 /**
  * Lista das contas da agência
@@ -24,107 +54,161 @@ public class Agencia {
 	public Agencia() {}
 	
 /**
- * Cria conta
  * 
  * @param numero
- * @param proprietario
- * @param saldo
- * @return
+ * @return conta
+ * @throws ExcecaoContaInexistente
  */
-	public static String criarConta(int numero, String proprietario, float saldo) {
+	private Conta getConta(int numero) throws ExcecaoContaInexistente {
+		for (int i = 0; i < contas.size(); i++) {
+			if (contas.get(i).getNumero() == numero) {
+				return contas.get(i);
+			}
+		}
+		
+		throw new ExcecaoContaInexistente("A conta informada nao existe.");
+	}
+	
+
+/**
+ * Método de criação da conta. O limite só tem sentido quando a conta é especial. Do contrário, ele e ignorado.
+ * 
+ * @param numero O número da conta.
+ * @param proprietario O proprietário da conta.
+ * @param saldo O saldo inicial da conta.
+ * @param tipo O tipo da conta.
+ * @param limite O limite de crédito para a conta do tipo ESPECIAL.
+ * @throws ExcecaoFaltaEspaco Se o número máximo de contas já houver sido cadastrado.
+ * @throws ExcecaoContaExistente Se o número da conta informado como parâmetro já existe na agência.
+ */
+	public void criarConta(int numero, String proprietario, float saldo, byte tipo, float limite) throws ExcecaoFaltaEspaco, ExcecaoContaExistente {
 		if (contas.size() >= MAX_CONTAS) {
-			return "Numero maximo de contas ja cadastrado no sistema.";
+			throw new ExcecaoFaltaEspaco("Numero maximo de contas ja cadastrado.");
 		}
 		
-		if (getConta(numero) != null) {
-			return "Ja existe uma conta com esse numero";
-		}
-			
-		if (saldo < 0 ) {
-			return "Impossivel cadastrar valor negativo como saldo.";
+		if (this.getConta(numero) != null) {
+			throw new ExcecaoContaExistente("Número de conta já existe.");
 		}
 		
-		contas.add(new Conta(numero, proprietario, saldo));
-		
-		return "Conta cadastrada com sucesso.";
+		switch (tipo) {
+			case 1:
+				contas.add(new Corrente(numero, proprietario, saldo));				
+				break;
+			case 2:
+				contas.add(new Poupanca(numero, proprietario, saldo));				
+				break;
+			case 3:
+				contas.add(new Especial(numero, proprietario, saldo, limite));				
+				break;
+		}
 	}	
 	
 /**
- * Cancela conta
- * 
+ * Método de cancelamento da conta.
  * @param numero
- * @return
  */
-	public static String cancelarConta(int numero) {
-		Conta conta = getConta(numero);
-		
-		if (conta == null) {
-			return "Conta inexistente.";
-		}
-		
-		contas.remove(conta);
-		return "Conta cancelada com sucesso.";
+	public void cancelarConta(int numero) {		
+		contas.remove(this.getConta(numero));
 	}
 
 /**
- * Lista todas as contas
+ * Método que realiza a listagem das contas cadastradas. Não há cobrança de tarifas na execução deste método.
  * 
  * @return
  */
-	public static String listarContas() {
+	public String listarContas() {
 		String listaDeContas = "";
 		
 		for (int i = 0; i < contas.size(); i++) {
-			listaDeContas += contas.get(i).getNumero() + " - " + contas.get(i).getProprietario() + " - " + contas.get(i).getSaldo() + "\n";
+			listaDeContas += contas.get(i).listarDados();
+			listaDeContas += u.t(24, "=");
 		}
 		
 		return listaDeContas;
 	}
 	
 /**
- * Saca um valor da conta
- * 	
+ * Consulta os dados de uma conta. Pode haver cobrança de tarifas na execução deste método, dependendo do tipo da conta e do número de consultas realizadas.
+ * 
  * @param numero
- * @param valor
- * @return 
- */
-	public static String sacar(int numero, float valor) {
-		Conta conta = getConta(numero);
-		
-		if (conta == null) {
-			return "Conta inexistente.";
-		}
-		
-		switch (conta.sacar(valor)) {
-			case 1:
-				return "O valor de saque nao pode ser negativo.";
-			case 2:
-				return "O valor de saque nao pode ser maior que o saldo da conta. Saque máximo de " + getSaldo(numero);
-		}
-		
-		return "Saque efetuado com sucesso. Saldo atual: "+ getSaldo(numero);
-	}
-
-/**
- * Deposita um valor na conta
- * 	
- * @param numero
- * @param valor
  * @return
  */
-	public static String depositar(int numero, float valor) {
-		Conta conta = getConta(numero);
+	public String consultarConta(int numero) {
+		Conta conta = this.getConta(numero);
 		
-		if (conta == null) {
-			return "Conta inexistente.";
+		if (conta.getTipoConta() == "Poupanca") {
+			conta.getSaldo();
 		}
 		
-		switch (conta.depositar(valor)) {
-			case 1:
-				return "O valor de deposito nao pode ser negativo.";
+		return conta.listarDados();
+	}
+	
+/**
+ * Aplica um reajuste a uma conta de poupança.
+ * 
+ * @param numero
+ * @param taxa
+ * @throws ExcecaoTipoConta
+ */
+	public void reajustarPoupanca(int numero, float taxa) throws ExcecaoTipoConta {
+		Poupanca conta = (Poupanca) this.getConta(numero);
+		
+		if (conta.getTipoConta() != "Poupanca")
+			throw new ExcecaoTipoConta("A conta informada nao e' uma POUPANCA.");
+		
+		conta.reajustar(taxa);
+	}
+	
+/**
+ * Realiza a cobrança de tarifa sobre uma conta corrente.
+ * 
+ * @param numero
+ * @throws ExcecaoTipoConta
+ */
+	public void cobrarTarifa(int numero) throws ExcecaoTipoConta {
+		Corrente conta = (Corrente) this.getConta(numero);
+		
+		if (conta.getTipoConta() == "Poupanca")
+			throw new ExcecaoTipoConta("A conta informada e' uma POUPANCA, e nao possui cobranca de tarifa.");
+		
+		conta.cobrarTarifa();
+	}
+	
+/**
+ * Realiza a cobrança de juros de uma conta especial.
+ * 
+ * @param numero O número da conta.
+ * @throws ExcecaoTipoConta Se a conta informada não for uma conta especial.
+ */
+	public void cobrarJurosContaEspecial(int numero) throws ExcecaoTipoConta {
+		Especial conta = (Especial) this.getConta(numero);
+		
+		if (conta.getTipoConta() != "Especial") {
+			throw new ExcecaoTipoConta("A conta informada nao e' uma CONTA ESPECIAL.");
 		}
 		
-		return "Deposito efetuado com sucesso";
+		conta.cobrarJuros();
+	}
+	
+/**
+ * Realiza o saque em uma conta.
+ * 	
+ * @param numero O número da conta.
+ * @param valor O valor a ser sacado.
+ */
+	public void sacar(int numero, float valor) {
+		this.getConta(numero).sacar(valor);
+	}
+
+
+/**
+ * Realiza o depósito em uma conta.
+ * 	
+ * @param numero O número da conta.
+ * @param valor O valor a ser depositado.
+ */
+	public void depositar(int numero, float valor) {
+		this.getConta(numero).depositar(valor);
 	}
 	
 /**
@@ -133,24 +217,7 @@ public class Agencia {
  * @param numero
  * @return
  */
-	public static float getSaldo(int numero) {
-		return getConta(numero).getSaldo();
+	public float getSaldo(int numero) {
+		return this.getConta(numero).getSaldo();
 	}
-
-/**
- * Pega uma conta na lista de contas
- * 
- * @param numero
- * @return 
- */
-	private static Conta getConta(int numero) {
-		for (int i = 0; i < contas.size(); i++) {
-			if (contas.get(i).getNumero() == numero) {
-				return contas.get(i);
-			}
-		}
-		
-		return null;
-	}
-	
 }

@@ -5,7 +5,7 @@ import execao.ExcecaoSaldoInsuficiente;
 import execao.ExcecaoValorNegativo;
 
 public class Poupanca extends Conta {
-
+	
 /**
  * A tarifa cobrada por consulta excedente ao saldo.
  */
@@ -45,7 +45,7 @@ public class Poupanca extends Conta {
 				throw new ExcecaoSaldoInsuficiente("O saldo da conta nao e' suficiente para realizar a consulta.");
 			}
 			
-			super.sacar(TARIFA_CONSULTA);
+			this.sacar(TARIFA_CONSULTA);
 		}
 		
 		return super.getSaldo();
@@ -65,7 +65,7 @@ public class Poupanca extends Conta {
 		float saldo = super.getSaldo();
 		float reajuste = (saldo * taxa) - saldo;
 		
-		super.depositar(reajuste);
+		this.depositar(reajuste);
 	}
 
 /**
@@ -73,12 +73,14 @@ public class Poupanca extends Conta {
  * @return
  */
 	public String listarDados() {
-		return super.listarDados();
+		return super.listarDados() +
+				"Quantidade de consultas realizadas: "	+ this.quantidadeConsultas 	+ "\n" +
+				"Tarifa por consulta excedente: " 		+ this.TARIFA_CONSULTA		+ "\n";
 	}
 
 	@Override
 	public String getTipoConta() {
-		return null;
+		return "Poupanca";
 	}
 	
 }
