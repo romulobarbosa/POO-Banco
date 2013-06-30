@@ -175,6 +175,22 @@ public class Agencia {
 	}
 	
 /**
+ * Realiza a cobrança de juros de uma conta especial.
+ * 
+ * @param numero O número da conta.
+ * @throws ExcecaoTipoConta Se a conta informada não for uma conta especial.
+ */
+	public void cobrarJurosContaEspecial(int numero) throws ExcecaoTipoConta {
+		Especial conta = (Especial) this.getConta(numero);
+		
+		if (conta.getTipoConta() != "Especial") {
+			throw new ExcecaoTipoConta("A conta informada nao e' uma CONTA ESPECIAL.");
+		}
+		
+		conta.cobrarJuros();
+	}
+	
+/**
  * Saca um valor da conta
  * 	
  * @param numero
