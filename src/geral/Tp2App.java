@@ -12,9 +12,9 @@ public class Tp2App {
 	private Scanner entrada = new Scanner(System.in);
 
 	public static void main(String[] args) {
-		executar();
+		// executar();
 		
-		}// fecha a void main
+	}// fecha a void main
 	
 	/**
 	 *  Método responsável por construir o menu de opções do usuário
