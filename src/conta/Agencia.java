@@ -97,20 +97,11 @@ public class Agencia {
 	}	
 	
 /**
- * Cancela conta
- * 
+ * MŽtodo de cancelamento da conta.
  * @param numero
- * @return
  */
-	public static String cancelarConta(int numero) {
-		Conta conta = getConta(numero);
-		
-		if (conta == null) {
-			return "Conta inexistente.";
-		}
-		
-		contas.remove(conta);
-		return "Conta cancelada com sucesso.";
+	public void cancelarConta(int numero) {		
+		contas.remove(this.getConta(numero));
 	}
 
 /**
