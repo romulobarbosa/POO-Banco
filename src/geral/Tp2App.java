@@ -152,7 +152,7 @@ public class Tp2App {
 	private void cobrarJuros() {
 		u.p("Informe o numero da conta:");
 		int numero = entrada.nextInt();
-		agencia.cobrarJuros(numero);
+		agencia.cobrarJurosContaEspecial(numero);
 	}
 	
 	/**
@@ -180,7 +180,7 @@ public class Tp2App {
 	private void consultarConta() {
 		u.p("Informe o numero da conta: ");
 		int numero = entrada.nextInt();
-		agencia.consultarContas(numero);
+		agencia.consultarConta(numero);
 	}
 	
 	/**
