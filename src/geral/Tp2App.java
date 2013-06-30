@@ -19,20 +19,25 @@ public class Tp2App {
 	 *  Método responsável por construir o menu de opções do usuário
 	 */
 	private void construirMenu() {
-		u.pl(u.t(54, "="));
-		u.pl("1 - Criar conta");
-		u.pl("2 - Cancelar conta");
-		u.pl("3 - Sacar");
-		u.pl("4 - Depositar");
-		u.pl("5 - Listar contas existentes (nao tarifado");
-		u.pl("6 - Consultar dados da conta (tarifado p/ poupanca)");
-		u.pl("7 - Reajustar poupanca");
-		u.pl("8 - Cobrar tarifa conta corrente ou especial");
-		u.pl("9 - Cobrar juros conta especial");
-		u.pl("10 - Finalizar programa");
-		
-		int opcao = entrada.nextInt();
-		validarOpcao(opcao);		
+		try {			
+			u.pl(u.t(54, "="));
+			u.pl("1 - Criar conta");
+			u.pl("2 - Cancelar conta");
+			u.pl("3 - Sacar");
+			u.pl("4 - Depositar");
+			u.pl("5 - Listar contas existentes (nao tarifado");
+			u.pl("6 - Consultar dados da conta (tarifado p/ poupanca)");
+			u.pl("7 - Reajustar poupanca");
+			u.pl("8 - Cobrar tarifa conta corrente ou especial");
+			u.pl("9 - Cobrar juros conta especial");
+			u.pl("10 - Finalizar programa");
+			
+			int opcao = entrada.nextInt();
+			validarOpcao(opcao);
+			
+		} catch(Exception erro){
+			
+		}
 	}
 	
 	/**
@@ -113,7 +118,8 @@ public class Tp2App {
 	 * @param e
 	 */
 	private void tratarExcecao(String msg, Exception e) {
-		
+		u.pl("Ocorreu um erro na execução do sistema");
+		u.pl(msg);
 	}
 	
 	/**
