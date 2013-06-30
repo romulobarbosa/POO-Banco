@@ -7,11 +7,26 @@ import java.util.ArrayList;
  * @author romulo
  */
 public class Agencia { 
+
+/**
+ * Constante para representar uma conta corrente.
+ */
+	static final byte CORRENTE = 1;
+
+/**
+ * Constante para representar uma conta especial.
+ */
+	static final byte POUPANCA = 2;
+	
+/**
+ * Constante para representar uma poupança.
+ */
+	static final byte ESPECIAL = 3;
 	
 /**
  * Número máximo de contas
  */
-	private static byte MAX_CONTAS = 20;
+	private static final byte MAX_CONTAS = 20;
 	
 /**
  * Lista das contas da agência
