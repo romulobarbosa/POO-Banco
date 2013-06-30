@@ -1,6 +1,8 @@
 package conta;
 import java.util.ArrayList;
 
+import execao.ExcecaoContaInexistente;
+
 /**
  * Agencia
  * 
@@ -37,6 +39,22 @@ public class Agencia {
  * Contrutor da classe agência
  */
 	public Agencia() {}
+	
+/**
+ * 
+ * @param numero
+ * @return conta
+ * @throws ExcecaoContaInexistente
+ */
+	private Conta getConta(int numero) throws ExcecaoContaInexistente {
+		for (int i = 0; i < contas.size(); i++) {
+			if (contas.get(i).getNumero() == numero) {
+				return contas.get(i);
+			}
+		}
+		
+		throw new ExcecaoContaInexistente("A conta informada nao existe.");
+	}
 	
 /**
  * Cria conta
@@ -151,21 +169,4 @@ public class Agencia {
 	public static float getSaldo(int numero) {
 		return getConta(numero).getSaldo();
 	}
-
-/**
- * Pega uma conta na lista de contas
- * 
- * @param numero
- * @return 
- */
-	private static Conta getConta(int numero) {
-		for (int i = 0; i < contas.size(); i++) {
-			if (contas.get(i).getNumero() == numero) {
-				return contas.get(i);
-			}
-		}
-		
-		return null;
-	}
-	
 }
