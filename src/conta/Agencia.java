@@ -191,11 +191,10 @@ public class Agencia {
 	}
 	
 /**
- * Saca um valor da conta
+ * Realiza o saque em uma conta.
  * 	
- * @param numero
- * @param valor
- * @return 
+ * @param numero O nœmero da conta.
+ * @param valor O valor a ser sacado.
  */
 	public void sacar(int numero, float valor) {
 		this.getConta(numero).sacar(valor);
@@ -203,25 +202,13 @@ public class Agencia {
 
 
 /**
- * Deposita um valor na conta
+ * Realiza o dep—sito em uma conta.
  * 	
- * @param numero
- * @param valor
- * @return
+ * @param numero O nœmero da conta.
+ * @param valor O valor a ser depositado.
  */
-	public static String depositar(int numero, float valor) {
-		Conta conta = getConta(numero);
-		
-		if (conta == null) {
-			return "Conta inexistente.";
-		}
-		
-		switch (conta.depositar(valor)) {
-			case 1:
-				return "O valor de deposito nao pode ser negativo.";
-		}
-		
-		return "Deposito efetuado com sucesso";
+	public void depositar(int numero, float valor) {
+		this.getConta(numero).depositar(valor);
 	}
 	
 /**
@@ -230,7 +217,7 @@ public class Agencia {
  * @param numero
  * @return
  */
-	public static float getSaldo(int numero) {
-		return getConta(numero).getSaldo();
+	public float getSaldo(int numero) {
+		return this.getConta(numero).getSaldo();
 	}
 }
