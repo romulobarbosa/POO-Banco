@@ -158,7 +158,21 @@ public class Agencia {
 		
 		conta.reajustar(taxa);
 	}
-
+	
+/**
+ * Realiza a cobrança de tarifa sobre uma conta corrente.
+ * 
+ * @param numero
+ * @throws ExcecaoTipoConta
+ */
+	public void cobrarTarifa(int numero) throws ExcecaoTipoConta {
+		Corrente conta = (Corrente) this.getConta(numero);
+		
+		if (conta.getTipoConta() == "Poupanca")
+			throw new ExcecaoTipoConta("A conta informada e' uma POUPANCA, e nao possui cobranca de tarifa.");
+		
+		conta.cobrarTarifa();
+	}
 	
 /**
  * Saca um valor da conta

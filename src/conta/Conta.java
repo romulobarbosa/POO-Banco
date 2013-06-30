@@ -121,7 +121,7 @@ public abstract class Conta {
  */
 	protected void verificarCondicoesParaSaque(float valor) throws ExcecaoValorNegativo, ExcecaoSaqueInvalido{
 		if (valor < 0) {
-			throw new ExcecaoValorNegativo("Valor de deposito nao pode ser negativo.");
+			throw new ExcecaoValorNegativo("Valor de saque nao pode ser negativo.");
 		}
 		
 		if (this.getSaldo() < valor) {
