@@ -2,7 +2,7 @@ package execao;
 import geral.Utilitarios;
 
 @SuppressWarnings("serial")
-public class ExcecaoNumeroInvalido extends RuntimeException {
+public class ExcecaoNumeroInvalido extends Exception {
 	private static Utilitarios u = new Utilitarios();
 
 	public ExcecaoNumeroInvalido(String message) {

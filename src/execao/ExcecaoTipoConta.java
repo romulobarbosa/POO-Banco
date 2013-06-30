@@ -2,7 +2,7 @@ package execao;
 import geral.Utilitarios;
 
 @SuppressWarnings("serial")
-public class ExcecaoTipoConta extends RuntimeException {
+public class ExcecaoTipoConta extends Exception {
 	private static Utilitarios u = new Utilitarios();
 
 	public ExcecaoTipoConta(String message) {
