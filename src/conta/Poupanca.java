@@ -25,7 +25,7 @@ public class Poupanca extends Conta {
  * @throws ExcecaoNumeroInvalido
  * @throws ExcecaoValorNegativo
  */
-	public Poupanca(int numero, String proprietario, float saldo) throws ExcecaoNumeroInvalido, ExcecaoValorNegativo {
+	public Poupanca(int numero, String proprietario, float saldo) {
 		super(numero, proprietario, saldo);
 	}
 	
@@ -33,15 +33,14 @@ public class Poupanca extends Conta {
  * ObtŽm o saldo da poupana, considerando o nœmero de consultas realizadas.
  * 
  * @return saldo
- * @throws ExcecaoSaldoInsuficiente
+ * @throws ExcecaoSaldoInsuficiente 
  */
+	@Override
 	public float getSaldo() throws ExcecaoSaldoInsuficiente {
-		float saldo = super.getSaldo();
-		
 		quantidadeConsultas++;
 		
 		if (quantidadeConsultas > 2) {
-			if (saldo < (float) 1.1) {
+			if (super.getSaldo() < TARIFA_CONSULTA) {
 				throw new ExcecaoSaldoInsuficiente("O saldo da conta nao e' suficiente para realizar a consulta.");
 			}
 			
@@ -50,6 +49,7 @@ public class Poupanca extends Conta {
 		
 		return super.getSaldo();
 	}
+	
 
 /**
  * Reajusta o saldo da poupana.
@@ -75,7 +75,7 @@ public class Poupanca extends Conta {
 	public String listarDados() {
 		return super.listarDados() +
 				"Quantidade de consultas realizadas: "	+ this.quantidadeConsultas 	+ "\n" +
-				"Tarifa por consulta excedente: " 		+ this.TARIFA_CONSULTA		+ "\n";
+				"Tarifa por consulta excedente: " 		+ TARIFA_CONSULTA		+ "\n";
 	}
 
 	@Override

@@ -9,7 +9,6 @@ import execao.ExcecaoContaExistente;
 import execao.ExcecaoContaInexistente;
 import execao.ExcecaoFaltaEspaco;
 import execao.ExcecaoTipoConta;
-import execao.ExcecaoValorNegativo;
 
 /**
  * Agencia
