@@ -2,6 +2,7 @@ package conta;
 
 import execao.ExcecaoNumeroInvalido;
 import execao.ExcecaoValorNegativo;
+import execao.ExcecaoSaldoInsuficiente;
 
 public class Especial extends Corrente {
 	
@@ -54,7 +55,16 @@ public class Especial extends Corrente {
 	
 	@Override
 	public void sacar(float valor) {
-		
+		if ((this.getSaldo() + this.limite - valorEmprestado) > valor && this.getSaldo() >= limite){
+			valor = valor - this.getSaldo();
+			valorEmprestado = this.limite - valor;
+			float tudo = this.getSaldo();
+			super.sacar(tudo);			
+		} else if (this.getSaldo() >= limite){
+			 super.sacar(valor);
+		} else {
+			throw new ExcecaoSaldoInsuficiente("Limite de credo insuficiente para realizar a operação.");
+		}
 	}
 	
 	@Override
