@@ -10,25 +10,64 @@ import geral.Utilitarios;
 
 
 public class Tp2App {
+/**
+ * Utilitarios
+ */
 	private static Utilitarios u = new Utilitarios();
-	private Agencia agencia = new Agencia();
-	private Scanner entrada = new Scanner(System.in);
-	private float saldo;
-	private float valor;
-	private int numero;
-	private String proprietario;
-	private java.io.BufferedReader in;
-	private static int MAX_OP = 10;
-	
 
-	public static void main(String[] args) {
-		// executar();
-		
-	}// fecha a void main
+/**
+ * Objeto agncia banc‡ria.
+ */
+	private Agencia agencia = new Agencia();
+
+/**
+ * Objeto para leitura de dados.
+ */
+	private Scanner entrada = new Scanner(System.in);
 	
-	/**
-	 *  MŽtodo respons‡vel por construir o menu de op›es do usu‡rio
-	 */
+/**
+ * Vari‡vel auxiliar para o saldo inicial da conta.
+ */
+	private float saldo;
+	
+/**
+ * Vari‡vel auxiliar para o valor a ser sacado ou depositado.
+ */
+	private float valor;
+	
+/**
+ * Vari‡vel auxiliar para o nœmero da conta.
+ */
+	private int numero;
+
+/**
+ * Vari‡vel auxiliar para o propriet‡rio da conta.
+ */
+	private String proprietario;
+
+/**
+ * Objeto auxiliar do mŽtodo pausar().
+ */
+	private java.io.BufferedReader in;
+	
+/**
+ * Constante utilizada para controlar o nœmero de op›es de menu dispon’veis.
+ */
+	private static int MAX_OP = 10;
+
+/**
+ * Construtor da classe.
+ * 
+ * @param args
+ */
+	public static void main(String[] args) {
+		 Tp2App programa = new Tp2App();
+		 programa.executar();
+	}
+	
+/**
+ *  MŽtodo respons‡vel por construir o menu de op›es do usu‡rio
+ */
 	private void construirMenu() {
 		try {			
 			u.pl(u.t(54, "="));
@@ -51,10 +90,10 @@ public class Tp2App {
 		}
 	}
 	
-	/**
-	 *  Realiza a valida‹o da op‹o, lanando uma exce‹o caso a op‹o seja inv‡lida
-	 * @param opcao
-	 */
+/**
+ *  Realiza a valida‹o da op‹o, lanando uma exce‹o caso a op‹o seja inv‡lida
+ * @param opcao
+ */
 	private void validarOpcao(int opcao) throws ExcecaoOpcaoInvalida {
 		if(!(opcao > 0 && opcao <= MAX_OP)) {
 			throw new ExcecaoOpcaoInvalida("Opcao invalida");
@@ -122,11 +161,11 @@ public class Tp2App {
 		}
 	}
 	
-	/**
-	 *  MŽtodo de tratamento genŽrico das exce›es
-	 * @param msg
-	 * @param e
-	 */
+/**
+ *  MŽtodo de tratamento genŽrico das exce›es
+ * @param msg
+ * @param e
+ */
 	private void tratarExcecao(String msg, Exception e) {
 		u.t(15, "*");
 		u.pl(msg + " Tente novamente.");
@@ -134,10 +173,10 @@ public class Tp2App {
 		u.t(15, "*");
 	}
 	
-	/**
-	 *  MŽtodo respons‡vel por exibir um submenu de tipos de conta e obter o tipo escolhido pelo usu‡rio
-	 * @return
-	 */
+/**
+ *  MŽtodo respons‡vel por exibir um submenu de tipos de conta e obter o tipo escolhido pelo usu‡rio
+ * @return
+ */
 	private byte selecionarTipoConta(){
 		u.pl("Tipo de conta:");
 		u.pl("");
@@ -148,16 +187,16 @@ public class Tp2App {
 		return entrada.nextByte();
 	}
 	
-	/**
-	 *  MŽtodo que inicia a execu‹o da aplica‹o
-	 */
+/**
+ *  MŽtodo que inicia a execu‹o da aplica‹o
+ */
 	public void executar() {
 		construirMenu();
 	}
 	
-	/**
-	 *  MŽtodo auxiliar da execu‹o da cobrana de juros de conta especial
-	 */
+/**
+ *  MŽtodo auxiliar da execu‹o da cobrana de juros de conta especial
+ */
 	private void cobrarJuros() {
 		u.p("Informe o numero da conta: ");
 		numero = entrada.nextInt();
@@ -169,9 +208,9 @@ public class Tp2App {
 		}
 	}
 	
-	/**
-	 *  MŽtodo auxiliar da execu‹o da cobrana de tarifa de conta corrente
-	 */
+/**
+ *  MŽtodo auxiliar da execu‹o da cobrana de tarifa de conta corrente
+ */
 	private void cobrarTarifa() {
 		u.p("Informe o numero da conta: ");
 		numero = entrada.nextInt();
@@ -182,9 +221,9 @@ public class Tp2App {
 		}
 	}
 	
-	/**
-	 *  MŽtodo auxiliar da execu‹o de reajuste de conta poupana
-	 */
+/**
+ *  MŽtodo auxiliar da execu‹o de reajuste de conta poupana
+ */
 	private void reajustarPoupanca() {
 		u.p("Informe o numero da conta e a taxa (%) de reajuste: ");
 		numero = entrada.nextInt();
@@ -197,18 +236,18 @@ public class Tp2App {
 		}
 	}
 	
-	/**
-	 *  MŽtodo auxiliar da execu‹o da consulta de dados da conta
-	 */
+/**
+ *  MŽtodo auxiliar da execu‹o da consulta de dados da conta
+ */
 	private void consultarConta() {
 		u.p("Informe o numero da conta: ");
 		numero = entrada.nextInt();
 		agencia.consultarConta(numero);
 	}
 	
-	/**
-	 *  MŽtodo auxiliar da execu‹o de um dep—sito
-	 */
+/**
+ *  MŽtodo auxiliar da execu‹o de um dep—sito
+ */
 	private void depositar() {
 		u.p("Informe o numero da conta e o valor de deposito:");
 		numero = entrada.nextInt();
@@ -216,28 +255,28 @@ public class Tp2App {
 		agencia.depositar(numero, valor);	
 	}
 	
-	/**
-	 *  MŽtodo auxiliar da execu‹o de um saque
-	 */
+/**
+ *  MŽtodo auxiliar da execu‹o de um saque
+ */
 	private void sacar() {
 		u.p("Informe o numero da conta e o valor de saque:");
 		numero = entrada.nextInt();
 		valor = entrada.nextFloat();
 		agencia.sacar(numero, valor);
 	}
-	
-	/**
-	 *  MŽtodo auxiliar da execu‹o do cancelamento de conta
-	 */
+
+/**
+ *  MŽtodo auxiliar da execu‹o do cancelamento de conta
+ */
 	private void cancelarConta() {
 		u.pl("Informe o numero da conta");
 		numero = entrada.nextInt();
 		agencia.cancelarConta(numero);
 	}
 	
-	/**
-	 *  MŽtodo auxiliar da execu‹o da cria‹o de conta
-	 */
+/**
+ *  MŽtodo auxiliar da execu‹o da cria‹o de conta
+ */
 	private void criarConta() {	
 		float limite = 0;
 		// Lista os tipos de conta
@@ -263,9 +302,9 @@ public class Tp2App {
 			
 	}
 	
-	/**
-	 *  MŽtodo respons‡vel por pausar a execu‹o atŽ o usu‡rio digitar ENTER
-	 */
+/**
+ *  MŽtodo respons‡vel por pausar a execu‹o atŽ o usu‡rio digitar ENTER
+ */
 	private void pausar() {
 		u.pl("Pressione ENTER para continuar...");
 		entrada.nextLine();
