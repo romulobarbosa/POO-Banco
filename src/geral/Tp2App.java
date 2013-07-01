@@ -1,8 +1,10 @@
 package geral;
 import conta.Agencia;
 import execao.ExcecaoContaExistente;
+import execao.ExcecaoFaltaEspaco;
 import execao.ExcecaoNumeroInvalido;
 import execao.ExcecaoOpcaoInvalida;
+import execao.ExcecaoTipoConta;
 import execao.ExcecaoValorNegativo;
 
 import java.util.Scanner; 
@@ -159,18 +161,27 @@ public class Tp2App {
 	 *  Método auxiliar da execução da cobrança de juros de conta especial
 	 */
 	private void cobrarJuros() {
-		u.p("Informe o numero da conta:");
+		u.p("Informe o numero da conta: ");
 		numero = entrada.nextInt();
-		agencia.cobrarJurosContaEspecial(numero);
+		
+		try {
+			agencia.cobrarJurosContaEspecial(numero);
+		} catch (ExcecaoTipoConta e) {
+			tratarExcecao("Ocorreu um erro ao cobrar a tarifa.", e);
+		}
 	}
 	
 	/**
 	 *  Método auxiliar da execução da cobrança de tarifa de conta corrente
 	 */
 	private void cobrarTarifa() {
-		u.p("Informe o numero da conta:");
+		u.p("Informe o numero da conta: ");
 		numero = entrada.nextInt();
-		agencia.cobrarTarifa(numero);
+		try {
+			agencia.cobrarTarifa(numero);
+		} catch (ExcecaoTipoConta e) {
+			tratarExcecao("Ocorreu um erro ao cobrar a tarifa.", e);
+		}
 	}
 	
 	/**
@@ -180,7 +191,12 @@ public class Tp2App {
 		u.p("Informe o numero da conta e a taxa (%) de reajuste: ");
 		numero = entrada.nextInt();
 		float taxa = entrada.nextFloat();
-		agencia.reajustarPoupanca(numero, taxa);
+		
+		try {
+			agencia.reajustarPoupanca(numero, taxa);
+		} catch (ExcecaoTipoConta e) {
+			tratarExcecao("Ocorreu um erro ao reajustar a poupanca.", e);
+		}
 	}
 	
 	/**
@@ -239,7 +255,13 @@ public class Tp2App {
 			limite = entrada.nextFloat();
 		}
 		
-		agencia.criarConta(numero, proprietario, saldo, tipo, limite);
+		try {
+			agencia.criarConta(numero, proprietario, saldo, tipo, limite);
+		} catch (ExcecaoFaltaEspaco e) {
+			tratarExcecao("Ocorreu um erro na criacao da conta.", e);
+		} catch (ExcecaoContaExistente e) {
+			tratarExcecao("Ocorreu um erro na criacao da conta.", e);
+		}
 			
 	}
 	
