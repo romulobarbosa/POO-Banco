@@ -6,11 +6,14 @@ public class Utilitarios {
 	}
 	
 	public String t(int num, String caractere){
-		while (num > 0){
-			caractere += "=";
+		String result = "";
+		
+		while (num != 0){
+			result += caractere;
 			num--;
 		}
-		return caractere;
+		
+		return result;
 	}
 	
 	public void p(String linha){

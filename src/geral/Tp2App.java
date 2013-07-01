@@ -5,6 +5,9 @@ import execao.ExcecaoFaltaEspaco;
 import execao.ExcecaoOpcaoInvalida;
 import execao.ExcecaoTipoConta;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Scanner; 
 import geral.Utilitarios;
 
@@ -48,7 +51,7 @@ public class Tp2App {
 /**
  * Objeto auxiliar do mŽtodo pausar().
  */
-	private java.io.BufferedReader in;
+	private BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 	
 /**
  * Constante utilizada para controlar o nœmero de op›es de menu dispon’veis.
@@ -69,25 +72,31 @@ public class Tp2App {
  *  MŽtodo respons‡vel por construir o menu de op›es do usu‡rio
  */
 	private void construirMenu() {
-		try {			
-			u.pl(u.t(54, "="));
-			u.pl("1 - Criar conta");
-			u.pl("2 - Cancelar conta");
-			u.pl("3 - Sacar");
-			u.pl("4 - Depositar");
-			u.pl("5 - Listar contas existentes (nao tarifado");
-			u.pl("6 - Consultar dados da conta (tarifado p/ poupanca)");
-			u.pl("7 - Reajustar poupanca");
-			u.pl("8 - Cobrar tarifa conta corrente ou especial");
-			u.pl("9 - Cobrar juros conta especial");
-			u.pl("10 - Finalizar programa");
-			
-			int opcao = entrada.nextInt();
+		u.pl(u.t(54, "="));
+		u.pl("Sistema Bancario - Operacoes Disponiveis");
+		u.pl("");
+		u.pl("1 - Criar conta");
+		u.pl("2 - Cancelar conta");
+		u.pl("3 - Sacar");
+		u.pl("4 - Depositar");
+		u.pl("5 - Listar contas existentes (nao tarifado");
+		u.pl("6 - Consultar dados da conta (tarifado p/ poupanca)");
+		u.pl("7 - Reajustar poupanca");
+		u.pl("8 - Cobrar tarifa conta corrente ou especial");
+		u.pl("9 - Cobrar juros conta especial");
+		u.pl("10 - Finalizar programa");
+		u.pl("");
+		u.p("Selecione uma operacao: ");
+		
+		int opcao = entrada.nextInt();
+		u.pl("");
+		
+		try {
 			validarOpcao(opcao);
-			
-		} catch(Exception erro){
-			
+		} catch (Exception e) {
+			tratarExcecao("Ocorreu um erro na validacao da opcao.", e);
 		}
+		
 	}
 	
 /**
@@ -95,86 +104,79 @@ public class Tp2App {
  * @param opcao
  */
 	private void validarOpcao(int opcao) throws ExcecaoOpcaoInvalida {
-		if(!(opcao > 0 && opcao <= MAX_OP)) {
+		if(!(opcao > 0 && opcao <= MAX_OP))
 			throw new ExcecaoOpcaoInvalida("Opcao invalida");
-		} else {
-			switch (opcao) {
-				case 1:
-					u.pl("1 - Criar Conta");
-					u.pl("");
-					criarConta();
-					break;
+		
+		switch (opcao) {
+			case 1:
+				u.pl("1 - Criar Conta");
+				criarConta();
+				break;
+			
+			case 2:
+				u.pl("2 - Cancelar Conta");
+				cancelarConta();
+				break;
 				
-				case 2:
-					u.pl("2 - Cancelar Conta");
-					u.pl("");
-					cancelarConta();
-					break;
-					
-				case 3:
-					u.pl("3 - Sacar");
-					u.pl("");
-					sacar();
-					break;
-					
-				case 4:
-					u.pl("4 - Depositar");
-					u.pl("");
-					depositar();
-				    break;
-	
-				case 5:
-					u.pl("5 - Listar contas existentes (nao tarifado");
-					u.pl("");
-					agencia.listarContas();
-				    break;
-	
-				case 6:
-					u.pl("6 - Consultar dados da conta (tarifado p/ poupanca)");
-					u.pl("");
-					consultarConta();
-				    break;
-	
-				case 7:
-					u.pl("7 - Reajustar poupanca");
-					u.pl("");
-					reajustarPoupanca();					
-				    break;
-	
-				case 8:
-					u.pl("8 - Cobrar tarifa conta corrente ou especial");
-					u.pl("");
-					cobrarTarifa();
-				    break;
-	
-				case 9:
-					u.pl("9 - Cobrar juros conta especial");
-					u.pl("");
-					cobrarJuros();
-				    break;
-	
-				case 10:
-					u.pl("10 - Finalizar programa");
-					u.pl("");
-				    break;
-			}
+			case 3:
+				u.pl("3 - Sacar");
+				sacar();
+				break;
+				
+			case 4:
+				u.pl("4 - Depositar");
+				depositar();
+			    break;
+
+			case 5:
+				u.pl("5 - Listar contas existentes (nao tarifado");
+				agencia.listarContas();
+			    break;
+
+			case 6:
+				u.pl("6 - Consultar dados da conta (tarifado p/ poupanca)");
+				consultarConta();
+			    break;
+
+			case 7:
+				u.pl("7 - Reajustar poupanca");
+				reajustarPoupanca();					
+			    break;
+
+			case 8:
+				u.pl("8 - Cobrar tarifa conta corrente ou especial");
+				cobrarTarifa();
+			    break;
+
+			case 9:
+				u.pl("9 - Cobrar juros conta especial");
+				cobrarJuros();
+			    break;
+
+			case 10:
+				u.pl("10 - Finalizar programa");
+			    break;
 		}
 	}
 	
 /**
- *  MŽtodo de tratamento genŽrico das exce›es
+ * MŽtodo de tratamento genŽrico das exce›es
+ * 
  * @param msg
  * @param e
  */
 	private void tratarExcecao(String msg, Exception e) {
-		u.t(15, "*");
+		u.pl(u.t(15, "*"));
 		u.pl(msg + " Tente novamente.");
 		u.pl("Detalhes do erro: " + e.getMessage());
-		u.t(15, "*");
+		u.pl(u.t(15, "*"));
+		
+		pausar();
 	}
 	
 /**
- *  MŽtodo respons‡vel por exibir um submenu de tipos de conta e obter o tipo escolhido pelo usu‡rio
+ * MŽtodo respons‡vel por exibir um submenu de tipos de conta e obter o tipo escolhido pelo usu‡rio
+ * 
  * @return
  */
 	private byte selecionarTipoConta(){
@@ -284,30 +286,36 @@ public class Tp2App {
 		byte tipo = selecionarTipoConta();
 		
 		u.pl("Informe o numero, proprietario e saldo da conta: ");
+		
 		numero = entrada.nextInt();
-		proprietario = entrada.next();
+		proprietario = entrada.nextLine();
+		entrada.nextLine();
 		saldo = entrada.nextFloat();
+		
 		if (tipo == 3){			
-			u.pl("Informe o limite");
+			u.pl("Informe o limite: ");
 			limite = entrada.nextFloat();
 		}
 		
-		try {
-			agencia.criarConta(numero, proprietario, saldo, tipo, limite);
-		} catch (ExcecaoFaltaEspaco e) {
-			tratarExcecao("Ocorreu um erro na criacao da conta.", e);
-		} catch (ExcecaoContaExistente e) {
-			tratarExcecao("Ocorreu um erro na criacao da conta.", e);
-		}
-			
+		agencia.criarConta(numero, proprietario, saldo, tipo, limite);	
 	}
 	
 /**
  *  MŽtodo respons‡vel por pausar a execu‹o atŽ o usu‡rio digitar ENTER
  */
 	private void pausar() {
-		u.pl("Pressione ENTER para continuar...");
-		entrada.nextLine();
-		construirMenu();
+		String buf = null;
+		
+		while(buf == null) {
+			u.pl("Pressione ENTER para continuar...");
+			
+			try {
+				buf = in.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		construirMenu();	
 	}	
 }
