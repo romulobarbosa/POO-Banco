@@ -70,6 +70,9 @@ public class Especial extends Corrente {
 	}
 	
 	public void depositar(float valor) {
+		if (valor < 0) {
+			throw new ExcecaoValorNegativo("Valor de deposito nao pode ser negativo.");
+		}
 		
 	}
 
