@@ -36,7 +36,7 @@ public class Corrente extends Conta {
 		if (permissoesEspeciais == false) {
 			this.habilitarPermissoesEspeciais();
 		}
-		
+			
 		this.sacar(this.tarifaManutencao);
 		
 		if (permissoesEspeciais == false) {
