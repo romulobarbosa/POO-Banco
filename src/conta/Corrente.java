@@ -1,7 +1,6 @@
 package conta;
 
 import execao.ExcecaoNumeroInvalido;
-import execao.ExcecaoSaqueInvalido;
 import execao.ExcecaoValorNegativo;
 
 public class Corrente extends Conta {
@@ -37,7 +36,9 @@ public class Corrente extends Conta {
 			this.habilitarPermissoesEspeciais();
 		}
 			
-		this.sacar(this.tarifaManutencao);
+		
+		super.sacar(this.tarifaManutencao);
+		
 		
 		if (permissoesEspeciais == false) {
 			this.deshabilitarPermissoesEspeciais();

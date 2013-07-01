@@ -2,10 +2,8 @@ package geral;
 import conta.Agencia;
 import execao.ExcecaoContaExistente;
 import execao.ExcecaoFaltaEspaco;
-import execao.ExcecaoNumeroInvalido;
 import execao.ExcecaoOpcaoInvalida;
 import execao.ExcecaoTipoConta;
-import execao.ExcecaoValorNegativo;
 
 import java.util.Scanner; 
 import geral.Utilitarios;
